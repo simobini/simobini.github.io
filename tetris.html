@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Tetris Game©">
+        <meta name="keywords" content="Tetris">
+        <meta name="author" content="Simone Bini">
+        <title>Tetris</title>
+        <link href="images/tetris/icon.png" rel="icon" media="all">
+        <link href="layout/styles/styleB.css" rel="stylesheet" type="text/css">
+        <script src="layout/scripts/jquery-3.6.4.min.js"></script>
+    </head>
+
+    <body>
+        <div class="loading-container">
+            <div class="loading-bar">
+                <div class="loading-text">LOADING</div>
+              <div class="loading-progress"></div>
+              <div class="loading-image"></div>
+            </div>
+        </div>
+        
+        <div>
+            <img class="game" src="images/tetris/tetirs.png" alt="title" id="title">
+        </div><br>
+
+        <div id="gameover"  class="game">
+        </div>
+
+        <canvas id="tetris" class="game" width="200" height="400"></canvas>
+
+        <div  class="game">
+            <h3> Punteggio : <div id="punteggio">0</div></h3>
+        </div>
+
+        <div  class="game">
+            <img id="state" src="images/common/pause.png">
+            <a href="index.html"><img id="home" src="images/common/home.png" alt="Home"></a>
+            <img id="restart" src="images/common/restart.png" alt="Refresh">
+            <img id="music" src="images/common/music.png" alt="Musica">
+        </div>
+
+        <script src="layout/scripts/tetramino.js"></script>
+        <script src="layout/scripts/tetris.js"></script>
+    </body>
+</html>
