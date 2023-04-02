@@ -7,11 +7,11 @@ $(document).ready(function(){
 
   $(".menu-item").hover(
     function() {
-      $(this).animate({"margin-bottom": "150px"}, 300); // Alza l'immagine
+      $(this).animate({"margin-bottom": "140px"}, 300); // Alza l'immagine
     },
 
     function() {
-      $(this).animate({"margin-bottom": "0px"}, 300); // Abbassa l'immagine
+      $(this).animate({"margin-bottom": "10px"}, 300); // Abbassa l'immagine
     }
   );
 
