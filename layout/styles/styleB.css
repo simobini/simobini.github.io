@@ -1,9 +1,9 @@
 body{
-    background-color: black;
+    background-color: #2b2d42;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 75px;
+    margin-top: 55px;
 }
 
 h3{
@@ -35,7 +35,7 @@ canvas{
 .loading-container {
     width: 100%;
     height: 100%;
-    margin-top: 30%;
+    margin-top: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@ canvas{
     left: 0;
     height: 100%;
     background-color: red;
-    animation: progress 3s ease-in-out forwards;
+    animation: progress 2s ease-in-out forwards;
     border-radius: 10px;
 }
   
@@ -78,7 +78,7 @@ canvas{
     background-repeat: no-repeat;
     background-position: center right;
     background-size: contain;
-    animation: progress 3s ease-in-out forwards;
+    animation: progress 2s ease-in-out forwards;
 }
   
 @keyframes progress {

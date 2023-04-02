@@ -5,7 +5,7 @@ var audioElement = document.createElement('audio');
 
 $(document).ready(function(){
 
-  $("div").hover(
+  $(".menu-item").hover(
     function() {
       $(this).animate({"margin-bottom": "150px"}, 300); // Alza l'immagine
     },
@@ -32,7 +32,7 @@ $(document).ready(function(){
   });
 });
 
-window.addEventListener("load", (event) => {
+/*window.addEventListener("load", (event) => {
   audioElement.setAttribute('src', 'sounds/menu.mp3');
   audioElement.play();
-});
+});*/

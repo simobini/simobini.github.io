@@ -20,11 +20,12 @@ const Pezzi = [
 var img = document.createElement("img");
 var song = true;
 let punteggio = 0;
-var audioElement = document.createElement('audio');
+var sottofondo = document.createElement('audio');
+var perso = document.createElement('audio');
 //dichiarazione variabili
 
 $(".game").hide();
-setInterval(start, 3000);
+setInterval(start, 2000);
 function start(){
     $(".game").show();
     $("div:first").hide();
@@ -183,8 +184,10 @@ Pezzo.prototype.blocca = function(){
                 img.src = "images/tetris/gameover.png"; 
                 var src = document.getElementById("gameover");
                 src.appendChild(img);
-                audioElement.setAttribute('src', 'sounds/gameover.mp3');
-                audioElement.play();
+                perso.setAttribute('src', 'sounds/gameover.mp3');
+                perso.play();
+                sottofondo.pause();
+                $("img:first").css("margin-top","180px");
                 EPunteggio.style.marginTop = -170 + "px";
                 gameOver = true;
                 break;
@@ -276,7 +279,7 @@ function rilascia(){
         p.muoviGiu();
         CP = Date.now();
     }
-    if( !gameOver){
+    if(!gameOver){
         requestAnimationFrame(rilascia);
     }
 }
@@ -294,20 +297,21 @@ $("#restart").click(function(){
 });
 //Funzione per ricaricare il gioco
 
-window.addEventListener("load", (event) => {
+/*window.addEventListener("load", (event) => {
     audioElement.setAttribute('src', 'sounds/tetris.mp3');
     audioElement.play();
 });
-//Funzione per far partire la musica all'avvio del gioco
+//Funzione per far partire la musica all'avvio del gioco*/
 
-audioElement.setAttribute('src', 'sounds/tetris.mp3');
 $("#music").click(function(){
+    sottofondo.setAttribute('src', 'sounds/tetris.mp3');
+
     if(song) {
-        audioElement.pause();
+        sottofondo.pause();
         song = false;
       }
       else {
-        audioElement.play();
+        sottofondo.play();
         song = true;
       }
 });

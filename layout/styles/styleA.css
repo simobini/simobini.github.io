@@ -1,23 +1,60 @@
 body{
-    background-image: url("../../images/home/background.png");
-    background-size: cover;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2b2d42;
+}
+  
+header{
+    background-color: #ef233c;
+    padding: 20px;
+}
+
+#head{
+    height: 70px;
+    width: 80px;
+    margin-left: 180px;
+    margin-top: -66px;
+}
+  
+h1{
+    color: #fff;
+    margin: 0;
+  }
+  
+.menu{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 780px;
+    margin-top: 30px;
 }
-
-#second, #third{
-    margin-left: 300px;
+  
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    cursor: pointer;
 }
-
+  
 img{
-    height: 250px;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+  
+p{
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
 }
 
 #state{
     width: 30px;
     height: 30px;
     position: fixed;
-    bottom: 5;
+    bottom: 1;
     cursor: pointer;
+    margin-left: 50%;
 }
