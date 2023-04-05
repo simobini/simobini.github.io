@@ -288,24 +288,37 @@ rilascia();
 /*La funzione rilascia viene chiamata una volta all'inizio del gioco e poi si autogestisce richiamando se stessa tramite requestAnimationFrame ogni volta che il gioco non è ancora terminato.*/
 
 $("#state").click(function(){
+    sottofondo.pause();
     alert("Gioco in pausa");
+    sottofondo.play();
 });
 //Funzione per mettere in pausa il gioco
 
 $("#restart").click(function(){
-    if(confirm("Riavviare la partita?")) window.location.reload();
+    sottofondo.pause();
+    if(confirm("Riavviare la partita?")) {
+        window.location.reload();
+    }
+    else sottofondo.play();
 });
 //Funzione per ricaricare il gioco
 
+$("#home").click(function(){
+    sottofondo.pause();
+    if(confirm("Tornare alla pagina principale?")) {
+        $(window).prop("location", "index.html");
+    }
+    else sottofondo.play(); 
+});
+//Funzione per tornare alla home
+
 /*window.addEventListener("load", (event) => {
-    audioElement.setAttribute('src', 'sounds/tetris.mp3');
-    audioElement.play();
+    sottofondo.setAttribute('src', 'sounds/tetris.mp3');
+    sottofondo.play();
 });
 //Funzione per far partire la musica all'avvio del gioco*/
 
 $("#music").click(function(){
-    sottofondo.setAttribute('src', 'sounds/tetris.mp3');
-
     if(song) {
         sottofondo.pause();
         song = false;
