@@ -162,7 +162,7 @@ Pezzo.prototype.ruota = function(){
 se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la nuova posizione utilizzando le funzioni cancella e disegna. 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
 
-Pezzo.prototype.tuttogiu = function(){
+Pezzo.prototype.tuttoGiu = function(){
     while(!this.collisione(0,1,this.TetraminoAttivo)){
         this.cancella();
         this.y++;
@@ -263,7 +263,7 @@ function CONTROLLA(event){
     }
     else if(event.keyCode == 32){
         p.muoviGiu();  
-        p.tuttogiu();
+        p.tuttoGiu();
     }
 }
 /*La funzione CONTROLLA è aggiunta come listener dell'evento keydown, ovvero l'evento generato quando si preme un tasto sulla tastiera. 
