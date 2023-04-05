@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2b2d42;
+    overflow-y: hidden;
+}
+  
+header{
+    background-color: #ef233c;
+    padding: 20px;
+}
+
+#head{
+    height: 70px;
+    width: 80px;
+    margin-left: 185px;
+    margin-top: -66px;
+}
+  
+h1{
+    color: #fff;
+    margin: 0;
+  }
+  
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 780px;
+    margin-top: 30px;
+}
+  
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    cursor: pointer;
+}
+  
+#first,#second,#third{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+  
+p{
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#nintendo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -570px;
+}
+
