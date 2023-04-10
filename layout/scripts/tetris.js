@@ -63,7 +63,7 @@ Scorre attraverso la tabella utilizzando due cicli for annidati, uno per le righ
 Ad ogni iterazione, chiama la funzione disegnaQuad per disegnare il quadrato nella posizione specificata dalle variabili r e c con il colore specificato nell'array tabella[r][c].*/
 
 function PezziRandom(){
-    let r = randomN = Math.floor(Math.random() * Pezzi.length) // 0 -> 6
+    let r = Math.floor(Math.random() * Pezzi.length) // 0 -> 6
     return new Pezzo( Pezzi[r][0],Pezzi[r][1]);
 }
 
@@ -94,7 +94,7 @@ Pezzo.prototype.riempi = function(color){
         }
     }
 }
-//Il metodo 'riempi' viene utilizzata  viene utilizzato per disegnare il tetramino sul tabellone di gioco controllando che lo stesso tabellone non sia già occupato da altri elementi.
+//Il metodo 'riempi' viene utilizzato per disegnare il tetramino sul tabellone di gioco controllando che lo stesso tabellone non sia già occupato da altri elementi.
 
 Pezzo.prototype.disegna = function(){
     this.riempi(this.color);
