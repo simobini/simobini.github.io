@@ -137,6 +137,15 @@ Pezzo.prototype.muoviSinistra = function(){
 } 
 //
 
+Pezzo.prototype.tuttoGiu = function(){
+    while(!this.collisione(0,1,this.TetraminoAttivo)){
+        this.cancella();
+        this.y++;
+        this.disegna();
+    }
+}
+//
+
 Pezzo.prototype.ruota = function(){
     let prossimoPezzo = this.tetramino[(this.tetraminoN + 1)%this.tetramino.length];
     let sposta = 0;
@@ -158,18 +167,9 @@ Pezzo.prototype.ruota = function(){
         this.disegna();
     }
 }
-/*Queste 3 funzioni permettono di muovere l'oggetto Pezzo e controllano anche la presenza di collisioni utilizzando la funzione collisione e, 
+/*Queste 4 funzioni permettono di muovere l'oggetto Pezzo e controllano anche la presenza di collisioni utilizzando la funzione collisione e, 
 se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la nuova posizione utilizzando le funzioni cancella e disegna. 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
-
-Pezzo.prototype.tuttoGiu = function(){
-    while(!this.collisione(0,1,this.TetraminoAttivo)){
-        this.cancella();
-        this.y++;
-        this.disegna();
-    }
-}
-//Funzione per far scendere velocemente il tetramino. 
 
 Pezzo.prototype.blocca = function(){
     for( r = 0; r < this.TetraminoAttivo.length; r++){
