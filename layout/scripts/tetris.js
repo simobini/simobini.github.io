@@ -151,12 +151,8 @@ Pezzo.prototype.ruota = function(){
     let sposta = 0;
     
     if(this.collisione(0,0,prossimoPezzo)){
-        if(this.x > COL/2){
-
-            sposta = -1;
-        }else{
-            sposta = 1;
-        }
+        if(this.x > COL/2) sposta = -1; 
+        else sposta = 1;
     }
     
     if(!this.collisione(sposta,0,prossimoPezzo)){
