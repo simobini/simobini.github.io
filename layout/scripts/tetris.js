@@ -22,6 +22,7 @@ var song = true;
 let punteggio = 0;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
+//var mov = document.createElement('audio');
 //dichiarazione variabili
 
 $(".game").hide();
@@ -180,7 +181,7 @@ Pezzo.prototype.blocca = function(){
                 img.src = "images/tetris/gameover.png"; 
                 var src = document.getElementById("gameover");
                 src.appendChild(img);
-                perso.setAttribute('src', 'sounds/gameover.mp3');
+                perso.setAttribute('src', 'sounds/tetris/gameover.mp3');
                 perso.play();
                 sottofondo.pause();
                 $("img:first").css("margin-top","180px");
@@ -245,16 +246,16 @@ I parametri x,y,pezzo che corrispondono rispettivamente alla posizione orizzonta
 document.addEventListener("keydown",CONTROLLA);
 
 function CONTROLLA(event){
-    if(event.keyCode == 37 || event.keyCode == 65){
+    if(event.keyCode == 37 || event.key == "a"){
         p.muoviSinistra();
         CP = Date.now();
-    }else if(event.keyCode == 38 || event.keyCode == 87){
+    }else if(event.keyCode == 38 || event.key == "w"){
         p.ruota();
         CP = Date.now();
-    }else if(event.keyCode == 39 || event.keyCode == 68){
+    }else if(event.keyCode == 39 || event.key == "d"){
         p.muoviDestra();
         CP = Date.now();
-    }else if(event.keyCode == 40 || event.keyCode == 83){
+    }else if(event.keyCode == 40 || event.key == "s"){
         p.muoviGiu();
     }
     else if(event.keyCode == 32){
@@ -268,12 +269,16 @@ Se viene premuto il tasto giù (keyCode == 40), la tessera viene fatta scendere 
 
 let CP = Date.now();
 let gameOver = false;
+//mov.setAttribute('src', 'sounds/tetris/click.mp3');
 function rilascia(){
     let now = Date.now();
     let delta = now - CP;
     if(delta > 1000){
         p.muoviGiu();
         CP = Date.now();
+        /*setInterval(function(){
+            mov.play();
+        }, 2000);*/
     }
     if(!gameOver){
         requestAnimationFrame(rilascia);
@@ -288,7 +293,6 @@ $("#state").click(function(){
     alert("Gioco in pausa");
     sottofondo.play();
 });
-//Funzione per mettere in pausa il gioco
 
 $("#restart").click(function(){
     sottofondo.pause();
@@ -297,7 +301,6 @@ $("#restart").click(function(){
     }
     else sottofondo.play();
 });
-//Funzione per ricaricare il gioco
 
 $("#home").click(function(){
     sottofondo.pause();
@@ -306,15 +309,21 @@ $("#home").click(function(){
     }
     else sottofondo.play(); 
 });
-//Funzione per tornare alla home
 
 window.addEventListener("load", (event) => {
-    sottofondo.setAttribute('src', 'sounds/tetris.mp3');
-    setInterval(function(){
-        sottofondo.play();
-    }, 2000);
+    sottofondo.setAttribute('src', 'sounds/tetris/soundtrack.mp3');
+    sottofondo.volume = 0.1;
+    sottofondo.play();
+
 });
-//Funzione per far partire la musica all'avvio del gioco
+
+window.onblur = function() {
+    sottofondo.pause();
+}
+
+window.onfocus = function() {
+    sottofondo.play();
+}
 
 $("#music").click(function(){
     if(song) {
@@ -326,4 +335,12 @@ $("#music").click(function(){
         song = true;
       }
 });
-//Funzione per gestire la musica
+
+document.addEventListener("keydown", function(event) {
+    if(event.key === "+"){
+        sottofondo.volume += 0.1;
+    }
+    else if(event.key === "-"){
+        sottofondo.volume -= 0.1;
+    }
+});
