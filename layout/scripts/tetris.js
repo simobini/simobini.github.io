@@ -308,11 +308,13 @@ $("#home").click(function(){
 });
 //Funzione per tornare alla home
 
-/*window.addEventListener("load", (event) => {
+window.addEventListener("load", (event) => {
     sottofondo.setAttribute('src', 'sounds/tetris.mp3');
-    sottofondo.play();
+    setInterval(function(){
+        sottofondo.play();
+    }, 2000);
 });
-//Funzione per far partire la musica all'avvio del gioco*/
+//Funzione per far partire la musica all'avvio del gioco
 
 $("#music").click(function(){
     if(song) {
