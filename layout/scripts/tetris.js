@@ -168,10 +168,10 @@ se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
 
 Pezzo.prototype.blocca = function(){
-    for( r = 0; r < this.TetraminoAttivo.length; r++){
+    for(r = 0; r < this.TetraminoAttivo.length; r++){
         for(c = 0; c < this.TetraminoAttivo.length; c++){
 
-            if( !this.TetraminoAttivo[r][c]){
+            if(!this.TetraminoAttivo[r][c]){
                 continue;
             }
 
@@ -188,21 +188,21 @@ Pezzo.prototype.blocca = function(){
                 gameOver = true;
                 break;
             }
-            tabella[this.y+r][this.x+c] = this.color;
+            else tabella[this.y+r][this.x+c] = this.color;
         }
     }
     for(r = 0; r < RIG; r++){
         let RigaPiena = true;
-        for( c = 0; c < COL; c++){
+        for(c = 0; c < COL; c++){
             RigaPiena = RigaPiena && (tabella[r][c] != SV);
         }
         if(RigaPiena){
-            for( y = r; y > 1; y--){
+            for(y = r; y > 1; y--){
                 for( c = 0; c < COL; c++){
                     tabella[y][c] = tabella[y-1][c];
                 }
             }
-            for( c = 0; c < COL; c++){
+            for(c = 0; c < COL; c++){
                 tabella[0][c] = SV;
             }
             punteggio += 10;
@@ -232,7 +232,7 @@ Pezzo.prototype.collisione = function(x,y,pezzo){
                 continue;
             }
 
-            if( tabella[newY][newX] != SV){
+            if(tabella[newY][newX] != SV){
                 return true;
             }
         }
