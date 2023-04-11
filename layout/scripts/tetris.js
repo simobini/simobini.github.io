@@ -294,6 +294,8 @@ $("#state").click(function(){
     sottofondo.play();
 });
 
+//Funzione per mettere in pausa la partita
+
 $("#restart").click(function(){
     sottofondo.pause();
     if(confirm("Riavviare la partita?")) {
@@ -301,6 +303,7 @@ $("#restart").click(function(){
     }
     else sottofondo.play();
 });
+//Funzione per riavviare la partita
 
 $("#home").click(function(){
     sottofondo.pause();
@@ -309,6 +312,7 @@ $("#home").click(function(){
     }
     else sottofondo.play(); 
 });
+//Funzione per tornare alla pagina principale
 
 window.addEventListener("load", (event) => {
     sottofondo.setAttribute('src', 'sounds/tetris/soundtrack.mp3');
@@ -316,14 +320,17 @@ window.addEventListener("load", (event) => {
     sottofondo.play();
 
 });
+//Funzione per riprodurre la musica di sottofondo
 
 window.onblur = function() {
     sottofondo.pause();
 }
+//Funzione per mettere in pausa la musica quando si cambia scheda
 
 window.onfocus = function() {
     sottofondo.play();
 }
+//Funzione per riprodurre la musica quando si ritorna alla scheda
 
 $("#music").click(function(){
     if(song) {
@@ -335,6 +342,7 @@ $("#music").click(function(){
         song = true;
       }
 });
+//Funzione per mettere in pausa e riprendere la musica
 
 document.addEventListener("keydown", function(event) {
     if(event.key === "+"){
@@ -344,3 +352,4 @@ document.addEventListener("keydown", function(event) {
         sottofondo.volume -= 0.1;
     }
 });
+//Funzione per aumentare e diminuire il volume della musica
