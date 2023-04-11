@@ -245,16 +245,16 @@ I parametri x,y,pezzo che corrispondono rispettivamente alla posizione orizzonta
 document.addEventListener("keydown",CONTROLLA);
 
 function CONTROLLA(event){
-    if(event.keyCode == 37){
+    if(event.keyCode == 37 || event.keyCode == 65){
         p.muoviSinistra();
         CP = Date.now();
-    }else if(event.keyCode == 38){
+    }else if(event.keyCode == 38 || event.keyCode == 87){
         p.ruota();
         CP = Date.now();
-    }else if(event.keyCode == 39){
+    }else if(event.keyCode == 39 || event.keyCode == 68){
         p.muoviDestra();
         CP = Date.now();
-    }else if(event.keyCode == 40){
+    }else if(event.keyCode == 40 || event.keyCode == 83){
         p.muoviGiu();
     }
     else if(event.keyCode == 32){
