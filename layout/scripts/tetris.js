@@ -353,9 +353,3 @@ document.addEventListener("keydown", function(event) {
     }
 });
 //Funzione per aumentare e diminuire il volume della musica
-
-setInterval(sottoSfondo, 2000);
-
-function sottoSfondo(){
-    sottofondo.play();
-}
