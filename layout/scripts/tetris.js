@@ -22,7 +22,7 @@ var song = true;
 let punteggio = 0;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
-//var mov = document.createElement('audio');
+var mov = document.createElement('audio');
 //dichiarazione variabili
 
 $(".game").hide();
@@ -269,16 +269,16 @@ Se viene premuto il tasto giù (keyCode == 40), la tessera viene fatta scendere 
 
 let CP = Date.now();
 let gameOver = false;
-//mov.setAttribute('src', 'sounds/tetris/click.mp3');
+mov.setAttribute('src', 'sounds/tetris/click.mp3');
 function rilascia(){
     let now = Date.now();
     let delta = now - CP;
     if(delta > 1000){
         p.muoviGiu();
         CP = Date.now();
-        /*setInterval(function(){
+        setInterval(function(){
             mov.play();
-        }, 2000);*/
+        }, 2000);
     }
     if(!gameOver){
         requestAnimationFrame(rilascia);

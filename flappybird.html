@@ -7,90 +7,23 @@
         <meta name="author" content="Guenda Morrone">
         <title>Flappy Bird</title>
         <link href="images/flappyBird/icon.png" rel="icon" media="all">
+		<link href="layout/scriptsstyle/style.css" rel="stylesheet" type="text/css">
 </head>
-<style> 
+<style>
 #spazioLudico{
 	background-image: url("images/flappyBird/sfondo.jpg");
-	background-repeat: repeat-x;
-	width: 35%;
-	height: 80%;
-	margin: auto;
-	background-size: cover;
-	background-position: center;
-	position: relative;
-	margin-bottom: 1.5%;
-}
-#title, #perso{
-	margin-top: 1.3%;
-	margin-bottom: 1%;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 17%;
-}
-#perso{
-	margin-top: 5%;
-	display: none;
-	margin-left: auto;
-	margin-right: auto;
-	width: 30%;
-}
-#sprite{
-	width: 6.3%;
-	position: absolute;
-	left: 35%;
-	top: 50%;
-	display: none;
-}
-body{
-	background-color: black;
 }
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-	var x = 50; 
-	var app;
-	
-	$(document).ready(function(){
-		alert("PREPARATI! \nAl tuo 'ok' il gioco partirà!");
-		$("#sprite").show();
-		$("#perso").hide();
-		setInterval(gravita, 1000);
-		function gravita(){
-			x = controlloMargineSotto(x);
-			$("#sprite").animate({top: x +'%'});
-		}
-		$("#spazioLudico").click(function(){
-			x = controlloMargineSopra(x);
-			$("#sprite").animate({top: x +'%'});
-		});
-	});
-</script>
+<script src="layout/scriptsstyle/script.js"></script>
 <body>
 	<img src="images/flappyBird/titolo.png" alt="Title" id="title"></img>
 	<img src="images/flappyBird/gameover.png" alt="Game Over" id="perso"></img>
-	<div id="spazioLudico"> </div>
+	<div id="spazioLudico"> 
+		<div id="appoggio"> 
+			
+		</div>
+	</div>
 	<img src="images/flappyBird/sprite.png" alt="Sprite" id="sprite"></img>
 </body>
-<script>
-function controlloMargineSopra(x){
-	if((x - 11) < 15) return x;
-	else{
-		x = x - 7;
-		return x;
-	}
-}
-function controlloMargineSotto(x){
-	if((x + 5) > 85){ //qui perdi
-		//return x;
-		document.getElementById("spazioLudico").style.display = "none";
-		document.getElementById("sprite").style.display = "none";
-		document.getElementById("perso").style.display = "block";
-	}
-	else{
-		x = x + 5;
-		return x;
-	}
-}
-</script>
 </html>
