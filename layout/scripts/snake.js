@@ -8,12 +8,13 @@ var song = true;
 let punteggio = 0;
 var audioElement = document.createElement('audio');
 
-//$(".game").hide();
-setInterval(start, 3000);
-
+$(".game").hide();
+$(".wrapper").hide();
+setInterval(start, 2000);
 function start(){
     $(".game").show();
-    //$("div:first").hide();
+    $(".wrapper").show();
+    $("div:first").hide();
 }
 
 //Funzione per mettere in pausa il gioco
