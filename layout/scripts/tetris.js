@@ -318,10 +318,11 @@ $("#home").click(function(){
 //Funzione per tornare alla pagina principale
 
 window.addEventListener("load", (event) => {
-    sottofondo.setAttribute('src', 'sounds/tetris/soundtrack.mp3');
-    sottofondo.volume = 0.1;
-    sottofondo.play();
-
+    setTimeout(function() {
+        sottofondo.setAttribute('src', 'sounds/tetris/soundtrack.mp3');
+        sottofondo.volume = 0.1;
+        sottofondo.play();
+    }, 2000);
 });
 //Funzione per riprodurre la musica di sottofondo
 
