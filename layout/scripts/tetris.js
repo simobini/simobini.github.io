@@ -280,7 +280,7 @@ function rilascia(){
         CP = Date.now();
         setInterval(function(){
             mov.play();
-            mov.volume = 0.1;
+            mov.volume = 1;
         }, 2000);
     }
     if(!gameOver){
