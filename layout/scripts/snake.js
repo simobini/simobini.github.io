@@ -1,6 +1,6 @@
 
 
-//------------------------FUNZIONI E VARIABILI NECESSARIE------------------------
+//-------------------------FUNZIONI E VARIABILI NECESSARIE------------------------
 
 //dichiarazione variabili
 var img = document.createElement("img");
