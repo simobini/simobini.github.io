@@ -184,7 +184,8 @@ Pezzo.prototype.blocca = function(){
                 perso.setAttribute('src', 'sounds/tetris/ciaouser.mp3');
                 perso.play();
                 sottofondo.pause();
-                $("img:first").css("margin-top","180px");
+                clearInterval(rilascia);
+                $("img:first").css("margin-top","120px");
                 EPunteggio.style.marginTop = -170 + "px";
                 gameOver = true;
                 break;
