@@ -178,7 +178,7 @@ Pezzo.prototype.blocca = function(){
 
             if(this.y + r < 0){
                 $("canvas").remove();
-                img.src = "images/tetris/gameover.png"; 
+                img.src = "images/tetris/gameover.png";  
                 var src = document.getElementById("gameover");
                 src.appendChild(img);
                 perso.setAttribute('src', 'sounds/tetris/ciaouser.mp3');
