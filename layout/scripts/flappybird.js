@@ -2,21 +2,21 @@
 var y = 50; //altezza del personaggio
 
 $(document).ready(function(){
-	$("#sprite").attr("src", "../../images/flappybird/sprite.png");
+	$("#sprite").attr("src", "images/flappybird/sprite.png");
 	alert("PREPARATI! \nAl tuo 'ok' il gioco partirà!");
 	$("#sprite").show(); //personaggio
 	$("#perso").hide();  //scritta Game Over
 	setInterval(gravita, 1000);
 	function gravita(){ //mi muovo giù
-		$("#sprite").attr("src", "../../images/flappybird/sprite2.png");
+		$("#sprite").attr("src", "images/flappybird/sprite2.png");
 		y = controlloMargineSotto(y);
 		$("#sprite").animate({top: y +'%'}, function(){;
-			$("#sprite").attr("src", "../../images/flappybird/sprite.png");
+			$("#sprite").attr("src", "images/flappybird/sprite.png");
 		}); 
 	}
 	$("#spazioLudico").click(function(){ //mi muovo su
 		y = controlloMargineSopra(y);
-		$("#sprite").attr("src", "../../images/flappybird/sprite2.png");
+		$("#sprite").attr("src", "images/flappybird/sprite2.png");
 		$("#sprite").animate({top: y +'%'}); //mi muovo su
 	});
 	setInterval(ostacolo, 2000);
