@@ -23,6 +23,7 @@ let punteggio = 0;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
 var mov = document.createElement('audio');
+var togli = document.createElement('audio');
 //dichiarazione variabili
 
 $(".game").hide();
@@ -167,6 +168,7 @@ Pezzo.prototype.ruota = function(){
 /*Queste 4 funzioni permettono di muovere l'oggetto Pezzo e controllano anche la presenza di collisioni utilizzando la funzione collisione e, 
 se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la nuova posizione utilizzando le funzioni cancella e disegna. 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
+togli.setAttribute('src', 'sounds/tetris/addio.mp3');
 
 Pezzo.prototype.blocca = function(){
     for(r = 0; r < this.TetraminoAttivo.length; r++){
@@ -208,6 +210,8 @@ Pezzo.prototype.blocca = function(){
             for(c = 0; c < COL; c++){
                 tabella[0][c] = SV;
             }
+            togli.play();
+            togli.volume = 1;
             punteggio += 10;
         }
     }
