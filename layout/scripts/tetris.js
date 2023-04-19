@@ -250,7 +250,8 @@ Pezzo.prototype.collisione = function(x,y,pezzo){
 I parametri x,y,pezzo che corrispondono rispettivamente alla posizione orizzontale e verticale del Pezzo e l'ultimo corrisponde al pezzo che si vuole controllare*/
 
 document.addEventListener("keydown",CONTROLLA);
-
+/*document.addEventListener("touchstart",CONTROLLA);
+document.addEventListener("touchmove", CONTROLLA);*/
 function CONTROLLA(event){
     if(event.keyCode == 37 || event.key == "a"){
         p.muoviSinistra();
