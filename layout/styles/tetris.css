@@ -95,7 +95,7 @@ canvas{
     }
 
     #home,#state,#restart,#music{
-        width: 20px;
+        width: 30px;
     }
 
     .loading-bar {
@@ -125,7 +125,7 @@ canvas{
     }
 
     #home,#state,#restart,#music{
-        width: 25px;
+        width: 30px;
     }
 
     .loading-container {
