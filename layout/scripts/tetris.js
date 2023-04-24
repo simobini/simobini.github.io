@@ -22,7 +22,6 @@ var song = true;
 let punteggio = 0;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
-var mov = document.createElement('audio');
 var togli = document.createElement('audio');
 //dichiarazione variabili
 
@@ -168,8 +167,8 @@ Pezzo.prototype.ruota = function(){
 /*Queste 4 funzioni permettono di muovere l'oggetto Pezzo e controllano anche la presenza di collisioni utilizzando la funzione collisione e, 
 se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la nuova posizione utilizzando le funzioni cancella e disegna. 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
-togli.setAttribute('src', 'sounds/tetris/addio.mp3');
 
+togli.setAttribute('src', 'sounds/tetris/addio.mp3');
 Pezzo.prototype.blocca = function(){
     for(r = 0; r < this.TetraminoAttivo.length; r++){
         for(c = 0; c < this.TetraminoAttivo.length; c++){
@@ -186,7 +185,6 @@ Pezzo.prototype.blocca = function(){
                 perso.setAttribute('src', 'sounds/tetris/ciaouser.mp3');
                 perso.play();
                 sottofondo.pause();
-                mov.setAttribute('src', '');
                 sottofondo.setAttribute('src', '');
                 $("img:first").css("margin-top","150px");
                 EPunteggio.style.marginTop = -170 + "px";
@@ -276,17 +274,12 @@ Se viene premuto il tasto giù (keyCode == 40), la tessera viene fatta scendere 
 
 let CP = Date.now();
 let gameOver = false;
-mov.setAttribute('src', 'sounds/tetris/click.mp3');
 function rilascia(){
     let now = Date.now();
     let delta = now - CP;
     if(delta > 1000){
         p.muoviGiu();
         CP = Date.now();
-        setInterval(function(){
-            mov.play();
-            mov.volume = 1;
-        }, 2000);
     }
     if(!gameOver){
         requestAnimationFrame(rilascia);
