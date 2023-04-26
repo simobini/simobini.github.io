@@ -1,19 +1,12 @@
 //PARTE CHE STAVA SOPRA
-var y = 57; //altezza del personaggio
-var xc = -1, yc = -3;
+var y = 50; //altezza del personaggio
 
-$(".game").hide();
-setInterval(start, 2000);
-function start(){
-    $(".game").show();
-    $("div:first").hide();
-}
-
-$("#sprite").attr("src", "images/flappybird/sprite.png");
-$("#sprite").show(); //personaggio
-$("#perso").hide();  //scritta Game Over
 $(document).ready(function(){
-	setInterval(gravita, 700);
+	$("#sprite").attr("src", "images/flappybird/sprite.png");
+	alert("PREPARATI! \nAl tuo 'ok' il gioco partirà!");
+	$("#sprite").show(); //personaggio
+	$("#perso").hide();  //scritta Game Over
+	setInterval(gravita, 1000);
 	function gravita(){ //mi muovo giù
 		$("#sprite").attr("src", "images/flappybird/sprite2.png");
 		y = controlloMargineSotto(y);
@@ -26,11 +19,9 @@ $(document).ready(function(){
 		$("#sprite").attr("src", "images/flappybird/sprite2.png");
 		$("#sprite").animate({top: y +'%'}); //mi muovo su
 	});
-	setInterval(ostacolo, 900);
+	setInterval(ostacolo, 2000);
 	function ostacolo(){
-		xc = xc - 70;
-		$("#appoggio").css("background-position", xc + "px " + yc + "px");
-		controllo(y, xc, yc);
+		inserisciColonne();
 	}
 });
 
@@ -40,7 +31,7 @@ var w = 35, h = 80; //larghezza e altezza spazioLudico
 function controlloMargineSopra(y){ //controlla quando salgo
 	if((y - 11) < 15) return y; //non mi fa più salire
 	else{
-		y = y - 9;
+		y = y - 7;
 		return y;
 	}
 }
@@ -48,16 +39,16 @@ function controlloMargineSopra(y){ //controlla quando salgo
 function controlloMargineSotto(y){ //controlla quando scendo
 	if((y + 5) > 85){ //qui perdi
 		//return y;
-		$("#spazioLudico").hide(); //toglie
-		$("#sprite").remove();
+		document.getElementById("spazioLudico").style.display = "none"; //toglie
+		document.getElementById("sprite").style.display = "none"; //toglie
 		document.getElementById("perso").style.display = "block"; //visualizza
 	}
 	else{ //aggiunge la gravità
-		y = y + 5;
+		y = y + 3;
 		return y;
 	}
 }
 
-function controllo(y, xc, yc){
-
+function inserisciColonne(){
+	document.getElementById("appoggio").style.display = "block"; //visualizza, tipo show
 }

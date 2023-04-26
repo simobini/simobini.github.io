@@ -38,7 +38,7 @@ body{
 #board{
     background: linear-gradient(rgb(170, 236, 170), rgb(236, 236, 167));
     width: 70vmin;
-    height: 65vmin;
+    height: 70vmin;
     border: 2px solid black;
     display: grid;
     grid-template-rows: repeat(20, 1fr);
@@ -47,11 +47,9 @@ body{
 
 .head{
     background-image: url("../../images/snake/giorgio.png");
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    /*border: 2px solid rgb(34, 4, 34);*/
-    transform: scale(1.02);
-    border-radius: 9px;
 }
 
 .snake{
