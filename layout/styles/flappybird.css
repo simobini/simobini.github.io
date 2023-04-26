@@ -44,6 +44,13 @@ body{
     color: white;
 }
 
+div{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: monospace;
+    text-align: center;
+}
+
 /* - - -  */
 .loading-container {
     width: 100%;
