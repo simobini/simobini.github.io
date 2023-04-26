@@ -1,62 +1,26 @@
 <!DOCTYPE html>
-<html lang="it">
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <meta name="description" content="Snake Game©">
-        <meta name="keywords" content="Snake">
-        <meta name="author" content="Padurean Davide">
-        <title>Snake</title>
-        <link href="images/snake/icon.png" rel="icon" media="all">
-        <link href="layout/styles/snake.css" rel="stylesheet" type="text/css">
-        <script src="layout/scripts/jquery-3.6.4.min.js"></script>
-    </head>
-
-    <body>
-        <div class="loading-container">
-            <div class="loading-bar">
-                <div class="loading-text">LOADING</div>
-              <div class="loading-progress"></div>
-              <div class="loading-image"></div>
-            </div>
-        </div>        
-
-    <!----------------------INIZIO CODICE DEL GIOCO SNAKE---------------------->
-        <div class="game">
-            <!--titolo del gioco formato immagine-->
-            <img src="images/snake/snakeTitle.png">
-        </div><br>
-
-        <!----------------------DIV NEL QUALE APPARITA LA SCRITTA GAME OVER---------------------->
-        <div class="game">
-        </div>
-
-        <!----------------------CI PERMETTE DI VISUALIZZATE IL NECESSARIO PER IL GIOCO DOPO LA SCHERMATA DI CARICAMENTO---------------------->
-        <div class="wrapper">
-    
-            <div class="play-board" id="playPlace">
-            </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnakeMania - Ek Gaming Katha</title>
+    <link rel="stylesheet" href="layout/styles/snake.css">
+    <script src="layout/scripts/jquery-3.6.4.min.js"></script>
+    <script src="layout/scripts/snake.js"></script>
+</head>
+<body>
+    <div class="gioco">
         
-        </div>
-        <br>
+        <div id="board"></div>
+    </div>
 
-        <div class="game">
+    <div id="punteggio" class="visuaPunteggio">
 
-            <span>Punteggio: </span><span id="punteggio1">0</span><br><br>
-            <span>Punteggio migliore: </span><span id="punteggioMigliore">0</span>
-        </div>
-        <br>
+        <span>Punteggio: </span><span id="puntNow">0</span><br><br>
+        <span>Punteggio migliore: </span><span id="bestPunt">0</span>
+        
+    </div>
+</body>
 
-
-    <!----------------------PULSANTI ALLA FINE DELLA PAGINA---------------------->
-        <div class="game">
-            <img id="state" src="images/common/pause.png">
-            <a href="index.html"><img id="home" src="images/common/home.png" alt="Home"></a>
-            <img id="restart" src="images/common/restart.png" alt="Refresh">
-            <img id="music" src="images/common/music.png" alt="Musica">
-        </div>
-
-        <script src="layout/scripts/snake.js"></script>
-    </body>
 </html>

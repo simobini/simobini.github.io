@@ -1,22 +1,22 @@
 #appoggio{
-	width: 17%;
-	height: 100%;
-	display: none;
-	float: right;
-	background-position: -4px -2px;
-	border: 3px solid red;
-	background-image:url("../../images/flappybird/colonne.png");
+	background-image: url("../../images/flappybird/colonne.png");
 	background-repeat: repeat-x;
+	background-position: -1px -3px;
+	background-size: 1550px 800px;
+	width: 99.5%;
+	height: 99.5%;
 }
 #spazioLudico{
+    background-image: url("../../images/flappybird/sfondo.jpg");
 	width: 35%;
-	height: 80%;
+	height: 83%;
 	margin: auto;
 	background-size: cover;
 	background-position: center;
 	position: relative;
 	margin-bottom: 1.5%;
 }
+
 #title, #perso{
 	margin-top: 1.3%;
 	margin-bottom: 1%;
@@ -36,9 +36,64 @@
 	width: 5.7%;
 	position: absolute;
 	left: 35%;
-	top: 50%;
+	top: 57%;
 	display: none;
 }
 body{
 	background-color: #2b2d42;
+    color: white;
+}
+
+/* - - -  */
+.loading-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.loading-bar {
+    width: 20%;
+    height: 30px;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 10px;
+}
+  
+.loading-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: red;
+    animation: progress 2s ease-in-out forwards;
+    border-radius: 10px;
+}
+  
+.loading-text {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.loading-image {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    height: 40px;
+    background-image: url('../../images/common/mario.gif');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: contain;
+    animation: progress 2s ease-in-out forwards;
+}
+  
+@keyframes progress {
+    0% { width: 0; }
+    100% { width: 100%; }
 }
