@@ -1,3 +1,50 @@
+
+
+//------------------------FUNZIONI E VARIABILI NECESSARIE------------------------
+
+//dichiarazione variabili
+var img = document.createElement("img");
+var song = true;
+let punteggio = 0;
+var audioElement = document.createElement('audio');
+
+//$(".game").hide();
+setInterval(start, 3000);
+
+function start(){
+    $(".game").show();
+    //$("div:first").hide();
+}
+
+//Funzione per mettere in pausa il gioco
+$("#state").click(function(){
+    alert("Gioco in pausa");
+});
+
+//Funzione per ricaricare il gioco
+$("#restart").click(function(){
+    if(confirm("Riavviare la partita?")) window.location.reload();
+});
+
+//Funzione per far partire la musica all'avvio del gioco
+window.addEventListener("load", (event) => {
+    audioElement.setAttribute('src', 'sounds/tetris.mp3');
+    audioElement.play();
+});
+
+//Funzione per gestire la musica
+audioElement.setAttribute('src', 'sounds/tetris.mp3');
+$("#music").click(function(){
+    if(song) {
+        audioElement.pause();
+        song = false;
+      }
+      else {
+        audioElement.play();
+        song = true;
+      }
+});
+
 //---------------------------------------------------------------------------------------
 //-----------------------------COSTANTI E VARIABILI RIGUARDANTE IL GIOCO
 let inputDir = {x: 0, y: 0}; 
@@ -5,6 +52,8 @@ var spazioMax = 20;
 let puntAttuale = 0;
 let lastPaintTime = 0;
 var controlloIntervallo;
+var contatoreXControllo = 0;
+
 food = {x: 6, y: 7};
 let snakeArr = [
     {x: 13, y: 15}
@@ -12,6 +61,8 @@ let snakeArr = [
 
 //---------------------------------------------------------------------------------------
 //-----------------------------FUNZIONI RIGUARDANTI IL GIOCO-----------------------------
+
+
 
 /*
 function main(ctime) {
@@ -35,7 +86,7 @@ function isCollide(snake) {
         }
     }
     // If you bump into the wall
-    if(snake[0].x >= 20 || snake[0].x <=0 || snake[0].y >= 20 || snake[0].y <=0){
+    if(snake[0].x > 20 || snake[0].x <=0 || snake[0].y > 20 || snake[0].y <=0){
         document.getElementById("bestPunt").innerHTML = puntAttuale;
         document.getElementById("puntNow").innerHTML = 0;
         puntAttuale = 0;
@@ -63,9 +114,9 @@ function gameEngine(){
         score = 0; 
     }
     
-
     //controllo se si ha mangiato un frutto
     if(snakeArr[0].y === food.y && snakeArr[0].x ===food.x){
+        //$(".food").css("background-image", 'url(layout/styles/headU.png)');
         
         puntAttuale++; //incremento del nostro punteggio attuale
         document.getElementById("puntNow").innerHTML = puntAttuale; //visualizzazione del punteggio attuale
@@ -87,53 +138,91 @@ function gameEngine(){
     //visualizzazione serpente
     board.innerHTML = "";
     snakeArr.forEach((e, index)=>{
-        snakeElement = document.createElement('div');
-        snakeElement.style.gridRowStart = e.y;
-        snakeElement.style.gridColumnStart = e.x;
+        if(contatoreXControllo == 0)
+        {
+            snakeHead = document.createElement('div');
+            snakeHead.classList.add('head');
+            console.log("secondo");
+
+            foodElement = document.createElement('div');
+            foodElement.style.gridRowStart = food.y;
+            foodElement.style.gridColumnStart = food.x;
+            foodElement.classList.add('food');
+            board.appendChild(foodElement);
+
+            contatoreXControllo++;
+        }
+        else
+        {
+            snakeElement = document.createElement('div');
+            snakeElement.style.gridRowStart = food.y;
+            snakeElement.style.gridRowStartù = food.x;
+        }
+
+
+        snakeHead.style.gridRowStart = e.y;
+        snakeHead.style.gridColumnStart = e.x;
+        console.log("primo");
+        
+        
+
 
         if(index === 0){
-            snakeElement.classList.add('head');
         }
-        else{
+        else
+        {
             snakeElement.classList.add('snake');
-        }
-        board.appendChild(snakeElement);
+        }  
+
+
+        foodElement = document.createElement('div');
+        foodElement.style.gridRowStart = food.y;
+        foodElement.style.gridColumnStart = food.x;
+        foodElement.classList.add('food');
+        board.appendChild(foodElement);
+        board.appendChild(snakeHead);
     });
 
     //visualizzazione cibo iniziale
-    foodElement = document.createElement('div');
-    foodElement.style.gridRowStart = food.y;
-    foodElement.style.gridColumnStart = food.x;
-    foodElement.classList.add('food')
-    board.appendChild(foodElement);
+    poscibo();
+    
 }
 
 //window.requestAnimationFrame(main);
 //premendo uno dei 4 tasti il serpente si muoverà nella direzione voluta, non potr
+const rotazione = document.getElementsByClassName("head");
+
 document.onkeydown = muoviSerpente;
 
     function muoviSerpente(e)
     {
         if(e.key == "ArrowUp" && inputDir.y != 1)
         {
+            $(".head").css("background-image", 'url(images/snake/headU.png)');
             inputDir.x = 0;
             inputDir.y = -1;
+
         }
 
         if(e.key == "ArrowDown" && inputDir.y != -1)
         {
+            $(".head").css("background-image", 'url(images/snake/headD.png)');
+
             inputDir.x = 0;
             inputDir.y = 1;
         }
 
         if(e.key == "ArrowLeft" && inputDir.x != 1)
         {
+            $(".head").css("background-image", 'url(images/snake/headL.png)');
+
             inputDir.x = -1;
             inputDir.y = 0;
         }
 
         if(e.key == "ArrowRight" && inputDir.x != -1)
         {
+            $(".head").css("background-image", 'url(images/snake/headR.png)');
             inputDir.x = 1;
             inputDir.y = 0;
         }
@@ -142,3 +231,15 @@ document.onkeydown = muoviSerpente;
     }
 
     controlloIntervallo = setInterval(gameEngine, 1500/10);
+
+    function poscibo()
+    {
+        
+    }
+
+
+
+
+
+
+
