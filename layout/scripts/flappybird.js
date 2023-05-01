@@ -63,7 +63,7 @@ function controllo(x, y, xc, yc){
 	//var s = document.getElementById("sprite");
 	//var a = document.getElementById("appoggio"); 
 
-	if(xc)
+	//if(xc)
 	
 	/*salvare le due altezze*/
 
