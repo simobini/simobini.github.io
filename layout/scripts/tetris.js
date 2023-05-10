@@ -23,6 +23,7 @@ let punteggio = 0;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
 var mov = document.createElement('audio');
+var togli = document.createElement('audio');
 //dichiarazione variabili
 
 $(".game").hide();
@@ -167,6 +168,7 @@ Pezzo.prototype.ruota = function(){
 /*Queste 4 funzioni permettono di muovere l'oggetto Pezzo e controllano anche la presenza di collisioni utilizzando la funzione collisione e, 
 se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la nuova posizione utilizzando le funzioni cancella e disegna. 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
+togli.setAttribute('src', 'sounds/tetris/addio.mp3');
 
 Pezzo.prototype.blocca = function(){
     for(r = 0; r < this.TetraminoAttivo.length; r++){
@@ -178,13 +180,15 @@ Pezzo.prototype.blocca = function(){
 
             if(this.y + r < 0){
                 $("canvas").remove();
-                img.src = "images/tetris/gameover.png"; 
+                img.src = "images/tetris/gameover.png";  
                 var src = document.getElementById("gameover");
                 src.appendChild(img);
-                perso.setAttribute('src', 'sounds/tetris/gameover.mp3');
+                perso.setAttribute('src', 'sounds/tetris/ciaouser.mp3');
                 perso.play();
                 sottofondo.pause();
-                $("img:first").css("margin-top","180px");
+                mov.setAttribute('src', '');
+                sottofondo.setAttribute('src', '');
+                $("img:first").css("margin-top","150px");
                 EPunteggio.style.marginTop = -170 + "px";
                 gameOver = true;
                 break;
@@ -206,6 +210,8 @@ Pezzo.prototype.blocca = function(){
             for(c = 0; c < COL; c++){
                 tabella[0][c] = SV;
             }
+            togli.play();
+            togli.volume = 1;
             punteggio += 10;
         }
     }
@@ -244,7 +250,8 @@ Pezzo.prototype.collisione = function(x,y,pezzo){
 I parametri x,y,pezzo che corrispondono rispettivamente alla posizione orizzontale e verticale del Pezzo e l'ultimo corrisponde al pezzo che si vuole controllare*/
 
 document.addEventListener("keydown",CONTROLLA);
-
+/*document.addEventListener("touchstart",CONTROLLA);
+document.addEventListener("touchmove", CONTROLLA);*/
 function CONTROLLA(event){
     if(event.keyCode == 37 || event.key == "a"){
         p.muoviSinistra();
@@ -278,6 +285,7 @@ function rilascia(){
         CP = Date.now();
         setInterval(function(){
             mov.play();
+            mov.volume = 1;
         }, 2000);
     }
     if(!gameOver){
@@ -315,10 +323,11 @@ $("#home").click(function(){
 //Funzione per tornare alla pagina principale
 
 window.addEventListener("load", (event) => {
-    sottofondo.setAttribute('src', 'sounds/tetris/soundtrack.mp3');
-    sottofondo.volume = 0.1;
-    sottofondo.play();
-
+    setTimeout(function() {
+        sottofondo.setAttribute('src', 'sounds/tetris/soundtrack.mp3');
+        sottofondo.volume = 0.1;
+        sottofondo.play();
+    }, 2000);
 });
 //Funzione per riprodurre la musica di sottofondo
 

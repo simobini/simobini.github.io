@@ -85,3 +85,103 @@ canvas{
     0% { width: 0; }
     100% { width: 100%; }
 }
+
+/* Responsive */
+
+/* Stile per schermi piccoli */
+@media only screen and (max-width: 768px) {
+    canvas{
+        width: 50%;
+    }
+
+    #home,#state,#restart,#music{
+        width: 30px;
+    }
+
+    .loading-bar {
+        width: 50%;
+        height: 20px;
+    }
+
+    .loading-text {
+        top: -20px;
+        font-size: 16px;
+    }
+    
+    .loading-image {
+        top: -20%;
+        height: 30px;
+    }
+
+    #title{
+        margin-top: -20px;
+    }
+}
+
+/* Stile per schermi medi */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    canvas{
+        width: 30%;
+    }
+
+    #home,#state,#restart,#music{
+        width: 30px;
+    }
+
+    .loading-container {
+        margin-top: 10%;
+    }
+
+    .loading-container {
+        margin-top: 20%;
+    }
+
+    .loading-bar {
+        width: 30%;
+        height: 25px;
+    }
+
+    .loading-text {
+        top: -22px;
+        font-size: 18px;
+    }
+
+    .loading-image {
+        top: -25%;
+        height: 35px;
+    }
+
+    #title{
+        margin-top: -25px;
+    }
+}
+
+/* Stile per schermi grandi */
+@media only screen and (min-width: 1024px) {
+    canvas{
+        width: 15%;
+    }
+
+    #home,#state,#restart,#music{
+        width: 30px;
+    }
+
+    .loading-container {
+        margin-top: 25%;
+    }
+
+    .loading-bar {
+        width: 20%;
+        height: 30px;
+    }
+
+    .loading-text {
+        top: -25px;
+        font-size: 20px;
+    }
+
+    .loading-image {
+        top: -30%;
+        height: 40px;
+    }
+}

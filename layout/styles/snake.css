@@ -1,11 +1,11 @@
 /*style del body*/
 
 body{
-    background-color: black;
+    margin-top: 15px;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 75px;
+    overflow-y: hidden;
 }
 
 div{
@@ -21,7 +21,7 @@ div{
     cursor: pointer;
 }
 
-/* style CHE SI DEVEONO GUARDARE DOPO 
+/*
 .loading-container {
     width: 100%;
     height: 100%;
@@ -71,40 +71,85 @@ div{
     animation: progress 3s ease-in-out forwards;
 }
 
-*/
+
  
 @keyframes progress {
     0% { width: 0; }
     100% { width: 100%; }
 }
-
+*/
 
 /*------------------------------------STYLE RIGUARDANTE IL GIOCO------------------------------------*/
 /*style del wrapper della mappa di gioco*/
-.wrapper{   
-    margin-left: auto;
-    margin-right: auto;
-    width: 55vmin;
-    height: 60vmin;
-    background-color: white;
+.gioco{
+    margin-top: -130px;
+    min-height: 100vh;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.play-board{
-    width: 100%;
-    height: 100%;
+#scoreBox{
+    position: absolute;
+    top: 9px;
+    right: 200px;
+    font-size: 39px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+#hiscoreBox{
+    position: absolute;
+    top: 59px;
+    right: 140px;
+    font-size: 39px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+#board{
+    background: linear-gradient(rgb(60, 65, 66), rgb(46, 146, 192));
+    
+    width: 70vmin;
+    height: 70vmin;
+    border: 2px solid black;
     display: grid;
-    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
-    background-color: grey;
-
+    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+    margin-top: -50px;
 }
 
-.play-board .serpentFood{
-    background-color: red;
+.head{
+    background: linear-gradient(green, blue);
+    border: 3px solid black;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-.play-board .serpentHead{
-    background-color: blue;
+.snake{
+    background: linear-gradient(gray, pink);
+    border: 3px solid black;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: contain;}
+
+.food{
+    background: linear-gradient(red, purple);
+    border: 3px solid black;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.visuaPunteggio{
+    margin-top: -145px;
+    margin-bottom:15px;
+    color: white;
+    text-align: center;
+    font-size: 25px;
 }
 
 

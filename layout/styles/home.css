@@ -2,7 +2,7 @@ body{
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #2b2d42;
-    overflow-y: hidden;
+
 }
   
 header{
@@ -20,7 +20,7 @@ header{
 h1{
     color: #fff;
     margin: 0;
-  }
+}
   
 .menu{
     display: flex;
@@ -57,4 +57,65 @@ p{
     justify-content: center;
     align-items: center;
     margin-top: -570px;
+}
+
+/* Responsive */
+
+/* Stile per schermi piccoli */
+@media only screen and (max-width: 768px) {
+    header{
+        padding: 15px;
+    }
+  
+    #head{
+        height: 50px;
+        width: 60px;
+        margin-left: 185px;
+        margin-top: -53px;
+    }
+  
+    .menu{
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px;
+    }
+  
+    #first,#second,#third{
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+        margin-left: 0;
+    }
+  
+    p{
+        font-size: 16px;
+    }
+  
+    #nintendo{
+        margin-top: 20px;
+    }
+}
+
+/* Stile per schermi medi */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    header {
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+    }
+    #head {
+        margin-left: 185px;
+        margin-top: -53px;
+    }
+    .menu-item {
+        margin: 20px 30px;
+    }
+}
+
+/* Stile per schermi grandi */
+@media only screen and (min-width: 1024px) {
+    .menu-item {
+        margin: 20px 50px;
+    }
 }

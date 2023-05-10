@@ -28,7 +28,7 @@
     <!----------------------INIZIO CODICE DEL GIOCO SNAKE---------------------->
         <div>
             <!--titolo del gioco formato immagine-->
-            <img src="images/snake/snakeTitle.png">
+            <img src="images/snake/snakeTitle.png" id="title" class="game">
         </div><br>
 
         <!----------------------DIV NEL QUALE APPARITA LA SCRITTA GAME OVER---------------------->
@@ -36,20 +36,18 @@
         </div>
 
         <!----------------------CI PERMETTE DI VISUALIZZATE IL NECESSARIO PER IL GIOCO DOPO LA SCHERMATA DI CARICAMENTO---------------------->
-        <div class="wrapper">
-    
-            <div class="play-board" id="playPlace">
-            </div>
+        <div class="gioco">
         
+        <div id="board"></div>
+            <div id="serpente"></div>
         </div>
-        <br>
-
-        <div>
-
-            <span>Punteggio: </span><span id="punteggio1">0</span><br><br>
-            <span>Punteggio migliore: </span><span id="punteggioMigliore">0</span>
+    
+        <div id="punteggio" class="visuaPunteggio">
+    
+            <span>Punteggio: </span><span id="puntNow">0</span><br><br>
+            <span>Punteggio migliore: </span><span id="bestPunt">0</span>
+            
         </div>
-        <br>
 
 
     <!----------------------PULSANTI ALLA FINE DELLA PAGINA---------------------->

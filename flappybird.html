@@ -7,23 +7,27 @@
         <meta name="author" content="Guenda Morrone">
         <title>Flappy Bird</title>
         <link href="images/flappyBird/icon.png" rel="icon" media="all">
-		<link href="layout/scriptsstyle/style.css" rel="stylesheet" type="text/css">
+		<link href="layout/styles/flappybird.css" rel="stylesheet" type="text/css">
+		<script src="layout/scripts/jquery-3.6.4.min.js"></script>
+		<script src="layout/scripts/flappybird.js"></script>
 </head>
-<style>
-#spazioLudico{
-	background-image: url("images/flappyBird/sfondo.jpg");
-}
-</style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="layout/scriptsstyle/script.js"></script>
+
 <body>
-	<img src="images/flappyBird/titolo.png" alt="Title" id="title"></img>
-	<img src="images/flappyBird/gameover.png" alt="Game Over" id="perso"></img>
+	<div class="loading-container">
+		<div class="loading-bar">
+			<div class="loading-text">LOADING</div>
+		  <div class="loading-progress"></div>
+		  <div class="loading-image"></div>
+		</div>
+	</div>
+
+	<img src="images/flappybird/titolo.png" alt="Title" id="title" class="game"></img>
+	<img src="images/flappybird/gameover.png" alt="Game Over" id="perso"></img>
 	<div id="spazioLudico"> 
 		<div id="appoggio"> 
 			
 		</div>
 	</div>
-	<img src="images/flappyBird/sprite.png" alt="Sprite" id="sprite"></img>
+	<img src="images/flappybird/sprite.png" alt="Sprite" id="sprite" class="game"></img>
 </body>
 </html>

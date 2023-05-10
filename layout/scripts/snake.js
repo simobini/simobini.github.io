@@ -45,101 +45,167 @@ $("#music").click(function(){
       }
 });
 
-//-------------------------------------------------------------------------------------------------------------------
-//------------------------FUNZIONI E VARIABILI NECESSARIE AL CORRETTO FUNZIONAMENTO DEL GIOCO------------------------
-const campoGioco = document.getElementById("playPlace");
-var varX, varY, serpX = 23, serpY = 10;
-var direzX = 0, direzY = 0;
-let codaSerpente = [];
+//---------------------------------------------------------------------------------------
+//-----------------------------COSTANTI E VARIABILI RIGUARDANTE IL GIOCO
+let inputDir = {x: 0, y: 0}; 
+var spazioMax = 20;
+let puntAttuale = 0;
+let lastPaintTime = 0;
 var controlloIntervallo;
+var contatoreXControllo = 0;
 
-//con questa funzione posizioniamo il cibo in modo randomico
-function posizioneCibo()
+food = {x: 6, y: 7};
+let snakeArr = [
+    {x: 13, y: 15}
+];
+
+//---------------------------------------------------------------------------------------
+//-----------------------------FUNZIONI RIGUARDANTI IL GIOCO-----------------------------
+
+
+
+/*
+function main(ctime) {
+    window.requestAnimationFrame(main);
+    // console.log(ctime)
+    if((ctime - lastPaintTime)/1000 < 1/speed){
+        return;
+    }
+    lastPaintTime = ctime;
+    gameEngine();
+}
+*/
+function isCollide(snake) {
+    //se ti colpisci dasolo
+    for (let i = 1; i < snakeArr.length; i++) {
+        if(snake[i].x === ((snake[0].x)+inputDir.x) && snake[i].y === ((snake[0].y)+inputDir.y)){
+            document.getElementById("bestPunt").innerHTML = puntAttuale;
+            document.getElementById("puntNow").innerHTML = 0;
+            puntAttuale = 0;
+            return true;
+        }
+    }
+    //se vai contro ai bordi della board
+    if(((snake[0].x)+inputDir.x) > 20 || ((snake[0].x)+inputDir.x) <=0 || ((snake[0].y)+inputDir.y) > 20 || ((snake[0].y)+inputDir.y) <=0){
+        document.getElementById("bestPunt").innerHTML = puntAttuale;
+        document.getElementById("puntNow").innerHTML = 0;
+        puntAttuale = 0;
+        return true;
+    }
+        
+    return false;
+}
+
+//funzione che mi da le coordinate della posizione successiva del cibo
+function randomPosizioneCibo()
 {
-    ciboX = Math.floor(Math.random() * 30) + 1;
-    ciboY = Math.floor(Math.random() * 30) + 1;
+    food.x = Math.floor(Math.random() * 20) + 1;
+    food.y = Math.floor(Math.random() * 20) + 1
 }
 
-//funzione che crea il cibo del serpente
-function posizioneCiboSerpente(){
- 
-    let posizioni = `<div class="serpentFood" style="grid-area: ${ciboY} / ${ciboX}"></div>`;    
 
-    //controllo se il serprente ha colpito uno dei muri
-    if(serpX<= 0 || serpX >= 30 || serpY <= 0 || serpY >= 30)
-    {
-        clearInterval(controlloIntervallo);
-        alert("gioco finito!!!");
-    }
-    else
-    {
-        //aggiornamento della posizione del serprnte 
-        serpX += direzX;
-        serpY += direzY;
-    }
-
-    //controllo se il serpente sta sulla casella del cibo
-    if(serpX === ciboX && serpY === ciboY)
-    {
-        posizioneCibo(); //creo un nuovo cibo in modo randomico sul campo
-        codaSerpente.push([ciboX, ciboY]); //salvo la coda del serpente
-        console.log("preso il cibo");
-    }
-
-    for(var i = codaSerpente.length - 1; i>0; i--)
-    {
-        codaSerpente[i] = codaSerpente[i - 1];
-    }
-
-    //posizioniamo il serpente nella casella voluta
-    codaSerpente[0] = [serpX, serpY];
-
+function gameEngine(){
+    // Part 1: Updating the snake array & Food
     
-
-    for(var i=0; i< codaSerpente.length; i++)
-    {
-        posizioni += `<div class="serpentHead" style="grid-area: ${codaSerpente[i][1]} / ${codaSerpente[i][0]}"></div>`;
+    if(isCollide(snakeArr)){
+        inputDir =  {x: 0, y: 0}; 
+        alert("Game Over. Press any key to play again!");
+        snakeArr = [{x: 13, y: 15}];
+        score = 0; 
+    }
+    
+    //controllo se si ha mangiato un frutto
+    if(snakeArr[0].y === food.y && snakeArr[0].x ===food.x){
+        //$(".food").css("background-image", 'url(layout/styles/headU.png)');
+        
+        puntAttuale++; //incremento del nostro punteggio attuale
+        document.getElementById("puntNow").innerHTML = puntAttuale; //visualizzazione del punteggio attuale
+        
+        //aggiunta di 1 nella coda del serpente
+        snakeArr.unshift({x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y});
+        randomPosizioneCibo(); //eseguiamo per la posizione randomica del prossimo frutto
     }
 
+    //funzione che serve per il movimento di tutto il serpente senza lasciare spazi tra i quadrati
+    for (let i = snakeArr.length - 2; i>=0; i--) { 
+        snakeArr[i+1] = {...snakeArr[i]};
+    }
 
-    //creazione del campo di gioco
-    campoGioco.innerHTML = posizioni;    
+    //aggiornamento della posizione della testa del serpente nella direzione scelta con il tasto non potrà andare nella direzione opposta rispetto a quella in cui sta andando
+    snakeArr[0].x += inputDir.x;
+    snakeArr[0].y += inputDir.y;
+
+    //visualizzazione serpente
+    board.innerHTML = "";
+    snakeArr.forEach((e, index)=>{
+
+        snakeElement = document.createElement('div');
+        snakeElement.style.gridRowStart = e.y;
+        snakeElement.style.gridColumnStart = e.x;
+
+        //scelta per aggiungere la classe giusta all'elemento --> snakeElement
+        if(index === 0) snakeElement.classList.add('head'); //aggiunta della classe head
+        else snakeElement.classList.add('snake'); //aggiunta della classe snake
+
+        board.appendChild(snakeElement);
+        
+    });
+
+    //visualizzazione cibo iniziale
+    foodElement = document.createElement('div');
+    foodElement.style.gridRowStart = food.y;
+    foodElement.style.gridColumnStart = food.x;
+    foodElement.classList.add('food')
+    board.appendChild(foodElement);
+    
 }
 
-//attraverso una funzione genero randomicamente la posizione del cibo
-posizioneCibo();
+//window.requestAnimationFrame(main);
+//premendo uno dei 4 tasti il serpente si muoverà nella direzione voluta, non potr
+const rotazione = document.getElementsByClassName("head");
 
-//posiziono il serpente e il cibo sull'area di gioco
-controlloIntervallo = setInterval(posizioneCiboSerpente, 100);
-
-//al click sul tasto il serpente si muoverà nella direzione voluta
 document.onkeydown = muoviSerpente;
 
     function muoviSerpente(e)
     {
-        if(e.key == "ArrowUp")
+        if(e.key == "ArrowUp" && inputDir.y != 1)
         {
-            direzX = 0;
-            direzY = -1;
+            //$(".head").css("background-image", 'url(images/snake/headU.png)');
+            inputDir.x = 0;
+            inputDir.y = -1;
+
         }
 
-        if(e.key == "ArrowDown")
+        if(e.key == "ArrowDown" && inputDir.y != -1)
         {
-            direzX = 0;
-            direzY = 1;
+            //$(".head").css("background-image", 'url(images/snake/headD.png)');
+            inputDir.x = 0;
+            inputDir.y = 1;
         }
 
-        if(e.key == "ArrowLeft")
+        if(e.key == "ArrowLeft" && inputDir.x != 1)
         {
-            direzX = -1;
-            direzY = 0;
+            //$(".head").css("background-image", 'url(images/snake/headL.png)');
+            inputDir.x = -1;
+            inputDir.y = 0;
         }
 
-        if(e.key == "ArrowRight")
+        if(e.key == "ArrowRight" && inputDir.x != -1)
         {
-            direzX = 1;
-            direzY = 0;
+            //$(".head").css("background-image", 'url(images/snake/headR.png)');
+            inputDir.x = 1;
+            inputDir.y = 0;
         }
         //eseguiamo la funzione per aggiornare la posizone del nostro serpente
-        posizioneCiboSerpente();
+        gameEngine();
     }
+
+    controlloIntervallo = setInterval(gameEngine, 1500/10);
+
+
+
+
+
+
+
+
