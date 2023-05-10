@@ -63,8 +63,15 @@ function controllo(x, y, xc, yc){
 	//var s = document.getElementById("sprite");
 	//var a = document.getElementById("appoggio"); 
 
+<<<<<<< HEAD
 	//if(xc)
 	
 	/*salvare le due altezze*/
 
+=======
+	
+
+	/*salvare le due altezze*/
+	//alert(xc);
+>>>>>>> 019c272f8bf940ab6e485dd638cf42249e1bd425
 }
