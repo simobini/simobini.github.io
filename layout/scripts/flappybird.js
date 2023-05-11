@@ -1,47 +1,19 @@
-//PARTE CHE STAVA SOPRA
-var y = 57; //altezza del personaggio
-var x = 30; //distanza dal bordo del personaggio
-var xc = -1, yc = -3;
+//Parte JavaScript
+var colonna = document.getElementById("colonna");
+var spazio = document.getElementById("spazio");
+var sprite = document.getElementById("sprite");
+var punti = 0;
 
-$(".game").hide();
-setInterval(start, 2000);
-function start(){
-    $(".game").show();
-    $("div:first").hide();
-}
-
-$("#sprite").attr("src", "images/flappybird/sprite.png");
-$("#sprite").show(); //personaggio
-$("#perso").hide();  //scritta Game Over
-$(document).ready(function(){
-	//setInterval(gravita, 700);
-	function gravita(){ //mi muovo giù
-		$("#sprite").attr("src", "images/flappybird/sprite2.png");
-		y = controlloMargineSotto(y);
-		$("#sprite").animate({top: y +'%', left: x + '%'}, function(){;
-			$("#sprite").attr("src", "images/flappybird/sprite.png");
-		}); 
-	}
-	$("#spazioLudico").click(function(){ //mi muovo su
-		y = controlloMargineSopra(y);
-		$("#sprite").attr("src", "images/flappybird/sprite2.png");
-		$("#sprite").animate({top: y +'%'}); //mi muovo su
-	});
-	setInterval(ostacolo, 900);
-	function ostacolo(){
-		xc = xc - 70;
-		$("#appoggio").css("background-position", xc + "px " + yc + "px");
-		controllo(x, y, xc, yc);
-	}
+spazio.addEventListener('animationiteration', () => {
+    var random = -((Math.random()*300)+150);
+    spazio.style.top = random + "px";
+    punti = punti + 1;
 });
-
-//PARTE CHE STAVA SOTTO
-var w = 35, h = 80; //larghezza e altezza spazioLudico
 
 function controlloMargineSopra(y){ //controlla quando salgo
 	if((y - 11) < 10) return y; //non mi fa più salire
 	else{
-		y = y - 9;
+		y = y - 11;
 		return y;
 	}
 }
@@ -59,19 +31,20 @@ function controlloMargineSotto(y){ //controlla quando scendo
 	}
 }
 
-function controllo(x, y, xc, yc){
-	//var s = document.getElementById("sprite");
-	//var a = document.getElementById("appoggio"); 
+function collisione(){
+    //Il mio div ha id "spazio"
+    var spaziomarginecontrollo = spazio.getBoundingClientRect();
+    //La mia immagine ha id "sprite"
+    var spritemarginecontrollo = sprite.getBoundingClientRect();
 
-<<<<<<< HEAD
-	//if(xc)
-	
-	/*salvare le due altezze*/
-
-=======
-	
-
-	/*salvare le due altezze*/
-	//alert(xc);
->>>>>>> 019c272f8bf940ab6e485dd638cf42249e1bd425
+    if (
+        spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
+        spaziomarginecontrollo.bottom > spritemarginecontrollo.top &&
+        spaziomarginecontrollo.left < spritemarginecontrollo.right &&
+        spaziomarginecontrollo.right > spritemarginecontrollo.left
+      ) {
+        //$("punti").text(punti);
+        alert(punti);
+      }
+      else return false;
 }

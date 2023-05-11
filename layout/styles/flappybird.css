@@ -1,17 +1,34 @@
-#appoggio{
-<<<<<<< HEAD
-	background-image: url("../../images/flappybird/colonne.png");
-	background-repeat: repeat-x;
-	background-position: -1px -1px;
-	background-size: 1550px 800px;
-=======
+/*#appoggio{
 	background-image: url("../../images/flappybird/colonneprova.png");
 	background-repeat: repeat-x;
 	background-position: -1px -1px;
 	background-size: 2700px 800px;
->>>>>>> 019c272f8bf940ab6e485dd638cf42249e1bd425
 	width: 99.5%;
 	height: 99.5%;
+}*/
+#colonna{
+    width: 7%;
+    height: 99%;
+    background-color: #5AC44E;
+    border: 3px solid #289039;
+    position: relative;
+    left: -100%;
+    animation: colonna 3s infinite linear;
+}
+@keyframes colonna {
+    0%{left: 100%};
+    100%{left: -50%};
+}
+#spazio{
+    width: 7.7%;
+    height: 27%;
+    background-color: white;
+    position: relative;
+    left: -100%;
+    top: -30%;
+    animation: colonna 3s infinite linear;
+    margin-bottom: calc((525 / 860) * 27%);
+    margin-top: calc((525 / 860) * 27%);
 }
 #spazioLudico{
     background-image: url("../../images/flappybird/sfondo.jpg");
@@ -19,9 +36,9 @@
 	height: 78%;
 	margin: auto;
 	background-position: -1px -1px;
-	background-size: 530px 800px;
-	position: relative;
+	background-size: 450px 600px;
 	margin-bottom: 1.5%;
+    overflow: hidden;
 }
 
 #title, #perso{
@@ -42,8 +59,8 @@
 #sprite{
 	width: 5.1%;
 	position: absolute;
-	left: 35%;
-	display: none;
+	left: 30%;
+	/*display: none;*/
 }
 body{
 	background-color: #2b2d42;
@@ -57,7 +74,7 @@ div{
     text-align: center;
 }
 
-/* - - -  */
+/* - - - 
 .loading-container {
     width: 100%;
     height: 100%;
@@ -109,4 +126,4 @@ div{
 @keyframes progress {
     0% { width: 0; }
     100% { width: 100%; }
-}
+} */
