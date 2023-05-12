@@ -2,12 +2,14 @@
 var colonna = document.getElementById("colonna");
 var spazio = document.getElementById("spazio");
 var sprite = document.getElementById("sprite");
-var punti = 0;
+var point = 0;
 
 spazio.addEventListener('animationiteration', () => {
     var random = -((Math.random()*300)+150);
+    while(random > -200){ //così non da valori troppo bassi
+      random = -((Math.random()*400)+30);
+    }
     spazio.style.top = random + "px";
-    punti = punti + 1;
 });
 
 function controlloMargineSopra(y){ //controlla quando salgo
@@ -37,14 +39,42 @@ function collisione(){
     //La mia immagine ha id "sprite"
     var spritemarginecontrollo = sprite.getBoundingClientRect();
 
+    //conto i punti
     if (
         spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
         spaziomarginecontrollo.bottom > spritemarginecontrollo.top &&
         spaziomarginecontrollo.left < spritemarginecontrollo.right &&
         spaziomarginecontrollo.right > spritemarginecontrollo.left
       ) {
-        //$("punti").text(punti);
-        alert(punti);
+        point = point + 1;
+        $("#punti").text("Punteggio: " + point);
       }
-      else return false;
+}
+
+function finale(){
+	    //Il mio div ha id "spazio"
+      var spaziomarginecontrollo = spazio.getBoundingClientRect();		
+      //Il mio div ha id "colonna"
+      var spaziomarginecontrollo2 = colonna.getBoundingClientRect();
+      //La mia immagine ha id "sprite"
+      var spritemarginecontrollo = sprite.getBoundingClientRect();
+
+      if ( //qui guardo se tocca il tubo
+        spaziomarginecontrollo2.top < spritemarginecontrollo.bottom &&
+        spaziomarginecontrollo2.bottom > spritemarginecontrollo.top &&
+        spaziomarginecontrollo2.left < spritemarginecontrollo.right &&
+        spaziomarginecontrollo2.right > spritemarginecontrollo.left 
+      ){
+          if( //qui escludo che sia la parte dove può effettivamente passare
+            spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
+            spaziomarginecontrollo.bottom > spritemarginecontrollo.top &&
+            spaziomarginecontrollo.left < spritemarginecontrollo.right &&
+            spaziomarginecontrollo.right > spritemarginecontrollo.left
+          ){
+            //il gioco si conclude
+            $("#spazioLudico").hide(); //toglie
+		        $("#sprite").remove();
+		        document.getElementById("perso").style.display = "block"; //visualizza
+          }
+      } 
 }

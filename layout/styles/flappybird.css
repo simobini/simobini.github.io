@@ -27,8 +27,6 @@
     left: -100%;
     top: -30%;
     animation: colonna 3s infinite linear;
-    margin-bottom: calc((525 / 860) * 27%);
-    margin-top: calc((525 / 860) * 27%);
 }
 #spazioLudico{
     background-image: url("../../images/flappybird/sfondo.jpg");
@@ -36,7 +34,7 @@
 	height: 78%;
 	margin: auto;
 	background-position: -1px -1px;
-	background-size: 450px 600px;
+	background-size: 450px 730px;
 	margin-bottom: 1.5%;
     overflow: hidden;
 }

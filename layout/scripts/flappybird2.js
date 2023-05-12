@@ -20,7 +20,5 @@ $(document).ready(function(){
 		    $("#sprite").attr("src", "images/flappybird/sprite2.png");
 		    $("#sprite").animate({top: y +'%'}); //mi muovo su
 	    });
-        setInterval(function() {
-            var start = collisione();
-        }, 1000);
+		setInterval(finale, 3000); //vedo se lo sprite non passa dove dovrebbe
 });
