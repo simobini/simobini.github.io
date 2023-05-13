@@ -8,9 +8,14 @@ body{
 
 h3{
     color: aliceblue;
+    margin-bottom: -25px;
 }
 
 #punteggio{
+    display: inline-block;
+}
+
+#punteggiomigliore{
     display: inline-block;
 }
 
@@ -28,6 +33,7 @@ canvas{
 }
 
 #home,#state,#restart,#music{
+    margin-top: 40px;
     width: 30px;
     cursor: pointer;
 }

@@ -24,6 +24,7 @@ var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
 var mov = document.createElement('audio');
 var togli = document.createElement('audio');
+var giorgio = document.createElement('audio');
 //dichiarazione variabili
 
 $(".game").hide();
@@ -183,19 +184,19 @@ Pezzo.prototype.blocca = function(){
                 img.src = "images/tetris/gameover.png";  
                 var src = document.getElementById("gameover");
                 src.appendChild(img);
-                perso.setAttribute('src', 'sounds/tetris/ciaouser.mp3');
+                perso.setAttribute('src', 'sounds/tetris/ziocanta.mp3');
                 perso.play();
                 sottofondo.pause();
                 mov.setAttribute('src', '');
-                sottofondo.setAttribute('src', '');
+                sottofondo.removeAttribute('src');
                 $("img:first").css("margin-top","150px");
                 EPunteggio.style.marginTop = -170 + "px";
                 gameOver = true;
-                break;
             }
             else tabella[this.y+r][this.x+c] = this.color;
         }
     }
+
     for(r = 0; r < RIG; r++){
         let RigaPiena = true;
         for(c = 0; c < COL; c++){
@@ -217,6 +218,7 @@ Pezzo.prototype.blocca = function(){
     }
     disegnaTab();
     EPunteggio.innerHTML = punteggio;
+
 }
 /*La funzione 'blocca()' viene chiamata quando il pezzo corrente si è bloccato sul fondo del gioco o ha raggiunto un altro pezzo già posizionato. 
 La funzione ha il compito di aggiungere il colore del pezzo alla matrice di gioco tabella e controllare se una riga è stata completata e quindi eliminata, 
@@ -250,8 +252,6 @@ Pezzo.prototype.collisione = function(x,y,pezzo){
 I parametri x,y,pezzo che corrispondono rispettivamente alla posizione orizzontale e verticale del Pezzo e l'ultimo corrisponde al pezzo che si vuole controllare*/
 
 document.addEventListener("keydown",CONTROLLA);
-/*document.addEventListener("touchstart",CONTROLLA);
-document.addEventListener("touchmove", CONTROLLA);*/
 function CONTROLLA(event){
     if(event.keyCode == 37 || event.key == "a"){
         p.muoviSinistra();
@@ -306,6 +306,7 @@ $("#state").click(function(){
 $("#restart").click(function(){
     sottofondo.pause();
     if(confirm("Riavviare la partita?")) {
+        localStorage.setItem('punteggio', punteggio);
         window.location.reload();
     }
     else sottofondo.play();
@@ -332,11 +333,15 @@ window.addEventListener("load", (event) => {
 
 window.onblur = function() {
     sottofondo.pause();
+    mov.setAttribute('src', '');
+    perso.pause();
 }
 //Funzione per mettere in pausa la musica quando si cambia scheda
 
 window.onfocus = function() {
     sottofondo.play();
+    mov.setAttribute('src', 'sounds/tetris/click.mp3');
+    perso.play();
 }
 //Funzione per riprodurre la musica quando si ritorna alla scheda
 
