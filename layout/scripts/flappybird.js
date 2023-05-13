@@ -48,11 +48,11 @@ function collisione(){
         point = point + 1;
         $("#punti").text("Punteggio: " + point);
       }
-    else if(
+    else if( //parte dove non può passare
               spaziomarginecontrollo2.left < spritemarginecontrollo.right &&
               spaziomarginecontrollo2.right > spritemarginecontrollo.left
           ){   
-            $("#spazioLudico").hide(); //toglie
+            $("#spazioLudico").hide(); 
 		        $("#sprite").remove();
 		        document.getElementById("perso").style.display = "block"; //visualizza
         }
