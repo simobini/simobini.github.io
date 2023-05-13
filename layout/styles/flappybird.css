@@ -1,3 +1,8 @@
+body{
+	background-color: #2b2d42;
+    color: aliceblue; 
+}
+
 #colonna{
     width: 7%;
     height: 99%;
@@ -7,29 +12,32 @@
     left: -100%;
     animation: colonna 3s infinite linear;
 }
+
 @keyframes colonna {
     0%{left: 100%};
     100%{left: -50%};
 }
+
 #spazio{
-    width: 9%;
-    height: 23%;
+    width: 8%;
+    height: 22%;
     background-color: #71C5D0;
     position: relative;
     left: -100%;
-    top: -30%;
+    top: -25%;
     animation: colonna 3s infinite linear;
 }
+
 #spazioLudico{
     background-color: #71C5D0;
 	width: 43%;
-	height: 81%;
+	height: 71%;
 	margin: auto;
 	margin-bottom: 1.5%;
     overflow: hidden;
 }
 
-#title, #perso{
+#title{
 	margin-top: 1.3%;
 	margin-bottom: 1%;
 	display: block;
@@ -37,22 +45,21 @@
 	margin-right: auto;
 	width: 17%;
 }
+
 #perso{
-	margin-top: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 	display: none;
 	margin-left: auto;
 	margin-right: auto;
-	width: 30%;
+	width: 25%;
 }
+
 #sprite{
 	width: 5.1%;
 	position: absolute;
 	left: 30%;
 	display: none;
-}
-body{
-	background-color: #2b2d42;
-    color: white;
 }
 
 div{
@@ -62,7 +69,20 @@ div{
     text-align: center;
 }
 
-/* .loading-container {
+h3{
+    margin-top: -10px;
+}
+
+#punti{
+    display: inline-block;
+}
+
+#home,#state,#restart,#music{
+    width: 30px;
+    cursor: pointer;
+}
+
+.loading-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -113,4 +133,4 @@ div{
 @keyframes progress {
     0% { width: 0; }
     100% { width: 100%; }
-}  */
+}

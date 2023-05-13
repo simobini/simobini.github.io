@@ -9,26 +9,40 @@
         <link href="images/flappyBird/icon.png" rel="icon" media="all">
 		<link href="layout/styles/flappybird.css" rel="stylesheet" type="text/css">
 		<script src="layout/scripts/jquery-3.6.4.min.js"></script>
-		<script src="layout/scripts/flappybird2.js"></script>
 </head>
 
 <body>
-	<!-- <div class="loading-container">
+	<div class="loading-container">
 		<div class="loading-bar">
 			<div class="loading-text">LOADING</div>
 		  <div class="loading-progress"></div>
 		  <div class="loading-image"></div>
 		</div>
-	</div> -->
+	</div>
 
 	<img src="images/flappybird/titolo.png" alt="Title" id="title" class="game"></img>
 	<img src="images/flappybird/gameover.png" alt="Game Over" id="perso"></img>
-	<div id="spazioLudico"> 
+
+	<div id="spazioLudico" class="game"> 
 		<div id="colonna"></div>
 		<div id="spazio"></div>
 	</div>
-	<img src="images/flappybird/sprite.png" alt="Sprite" id="sprite" class="game"></img>
-	<p id="punti">Punteggio: 0</p>
+
+	<div class="game">
+		<img src="images/flappybird/sprite.png" alt="Sprite" id="sprite"></img>
+	</div>
+	
+	<div class="game">
+		<h3 id="punti">Punteggio: 0</h3>
+	</div>
+	
+
+	<div class="game">
+		<img id="state" src="images/common/pause.png">
+		<img id="home" src="images/common/home.png" alt="Home">
+		<img id="restart" src="images/common/restart.png" alt="Refresh">
+		<img id="music" src="images/common/music.png" alt="Musica">
+	</div>
 </body>
 	<script src="layout/scripts/flappybird.js"></script>
 </html>

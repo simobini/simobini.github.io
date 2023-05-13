@@ -301,7 +301,6 @@ $("#state").click(function(){
     alert("Gioco in pausa");
     sottofondo.play();
 });
-
 //Funzione per mettere in pausa la partita
 
 $("#restart").click(function(){
