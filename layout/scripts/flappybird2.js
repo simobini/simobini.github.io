@@ -1,5 +1,5 @@
 //Parte jQuery
-var y = 57; //altezza del personaggio
+var y = 70; //altezza del personaggio
 var x = 30; //distanza dal bordo del personaggio
 var start = false; //inizializzo a true così da iniziare subito
 
@@ -20,5 +20,5 @@ $(document).ready(function(){
 		    $("#sprite").attr("src", "images/flappybird/sprite2.png");
 		    $("#sprite").animate({top: y +'%'}); //mi muovo su
 	    });
-		setInterval(finale, 3000); //vedo se lo sprite non passa dove dovrebbe
+		setInterval(collisione, 300); //vedo se lo sprite non passa dove dovrebbe
 });

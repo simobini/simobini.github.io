@@ -20,8 +20,8 @@
     100%{left: -50%};
 }
 #spazio{
-    width: 7.7%;
-    height: 27%;
+    width: 7.5%;
+    height: 23%;
     background-color: white;
     position: relative;
     left: -100%;
@@ -34,7 +34,7 @@
 	height: 78%;
 	margin: auto;
 	background-position: -1px -1px;
-	background-size: 450px 730px;
+	background-size: 450px 800px;
 	margin-bottom: 1.5%;
     overflow: hidden;
 }
@@ -58,7 +58,7 @@
 	width: 5.1%;
 	position: absolute;
 	left: 30%;
-	/*display: none;*/
+	display: none;
 }
 body{
 	background-color: #2b2d42;

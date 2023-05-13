@@ -2,7 +2,6 @@
 var colonna = document.getElementById("colonna");
 var spazio = document.getElementById("spazio");
 var sprite = document.getElementById("sprite");
-var point = 0;
 
 spazio.addEventListener('animationiteration', () => {
     var random = -((Math.random()*300)+150);
@@ -34,21 +33,26 @@ function controlloMargineSotto(y){ //controlla quando scendo
 }
 
 function collisione(){
-    //Il mio div ha id "spazio"
-    var spaziomarginecontrollo = spazio.getBoundingClientRect();
-    //La mia immagine ha id "sprite"
-    var spritemarginecontrollo = sprite.getBoundingClientRect();
+    var point = 0; //variabile punti
+    var spaziomarginecontrollo = spazio.getBoundingClientRect(); //Il mio div ha id "spazio" 
+    var spritemarginecontrollo = sprite.getBoundingClientRect(); //La mia immagine ha id "sprite"
+
+    spaziomarginecontrollo.top = spaziomarginecontrollo.top + 30;
+    spaziomarginecontrollo.bottom = spaziomarginecontrollo.bottom + 30;
 
     //conto i punti
-    if (
+    if ( //parte dove può passare
         spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
         spaziomarginecontrollo.bottom > spritemarginecontrollo.top &&
         spaziomarginecontrollo.left < spritemarginecontrollo.right &&
         spaziomarginecontrollo.right > spritemarginecontrollo.left
-      ) {
+      ) {    
         point = point + 1;
         $("#punti").text("Punteggio: " + point);
       }
+    else{
+      finale(); 
+    }
 }
 
 function finale(){
@@ -59,22 +63,15 @@ function finale(){
       //La mia immagine ha id "sprite"
       var spritemarginecontrollo = sprite.getBoundingClientRect();
 
-      if ( //qui guardo se tocca il tubo
+      if ( //parte dove non può passare
         spaziomarginecontrollo2.top < spritemarginecontrollo.bottom &&
         spaziomarginecontrollo2.bottom > spritemarginecontrollo.top &&
         spaziomarginecontrollo2.left < spritemarginecontrollo.right &&
         spaziomarginecontrollo2.right > spritemarginecontrollo.left 
       ){
-          if( //qui escludo che sia la parte dove può effettivamente passare
-            spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
-            spaziomarginecontrollo.bottom > spritemarginecontrollo.top &&
-            spaziomarginecontrollo.left < spritemarginecontrollo.right &&
-            spaziomarginecontrollo.right > spritemarginecontrollo.left
-          ){
-            //il gioco si conclude
+          //il gioco si conclude
             $("#spazioLudico").hide(); //toglie
 		        $("#sprite").remove();
 		        document.getElementById("perso").style.display = "block"; //visualizza
-          }
-      } 
-}
+        }
+} 
