@@ -14,11 +14,12 @@ $(document).ready(function(){
 		    $("#sprite").animate({top: y +'%', left: x + '%'}, function(){;
 			    $("#sprite").attr("src", "images/flappybird/sprite.png");
 		    }); 
+			collisione();
 	    }
          $("#spazioLudico").click(function(){ //mi muovo su
 		    y = controlloMargineSopra(y);
 		    $("#sprite").attr("src", "images/flappybird/sprite2.png");
 		    $("#sprite").animate({top: y +'%'}); //mi muovo su
+			collisione();
 	    });
-		setInterval(collisione, 300); //vedo se lo sprite non passa dove dovrebbe
 });

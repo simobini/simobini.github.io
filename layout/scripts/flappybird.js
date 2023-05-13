@@ -2,6 +2,7 @@
 var colonna = document.getElementById("colonna");
 var spazio = document.getElementById("spazio");
 var sprite = document.getElementById("sprite");
+var point = 0; //variabile punti
 
 spazio.addEventListener('animationiteration', () => {
     var random = -((Math.random()*300)+150);
@@ -33,13 +34,10 @@ function controlloMargineSotto(y){ //controlla quando scendo
 }
 
 function collisione(){
-    var point = 0; //variabile punti
     var spaziomarginecontrollo = spazio.getBoundingClientRect(); //Il mio div ha id "spazio" 
     var spritemarginecontrollo = sprite.getBoundingClientRect(); //La mia immagine ha id "sprite"
-
-    spaziomarginecontrollo.top = spaziomarginecontrollo.top + 30;
-    spaziomarginecontrollo.bottom = spaziomarginecontrollo.bottom + 30;
-
+    var spaziomarginecontrollo2 = colonna.getBoundingClientRect(); //Il mio div ha id "colonna"
+    
     //conto i punti
     if ( //parte dove può passare
         spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
@@ -50,26 +48,10 @@ function collisione(){
         point = point + 1;
         $("#punti").text("Punteggio: " + point);
       }
-    else{
-      finale(); 
-    }
-}
-
-function finale(){
-	    //Il mio div ha id "spazio"
-      var spaziomarginecontrollo = spazio.getBoundingClientRect();		
-      //Il mio div ha id "colonna"
-      var spaziomarginecontrollo2 = colonna.getBoundingClientRect();
-      //La mia immagine ha id "sprite"
-      var spritemarginecontrollo = sprite.getBoundingClientRect();
-
-      if ( //parte dove non può passare
-        spaziomarginecontrollo2.top < spritemarginecontrollo.bottom &&
-        spaziomarginecontrollo2.bottom > spritemarginecontrollo.top &&
-        spaziomarginecontrollo2.left < spritemarginecontrollo.right &&
-        spaziomarginecontrollo2.right > spritemarginecontrollo.left 
-      ){
-          //il gioco si conclude
+    else if(
+              spaziomarginecontrollo2.left < spritemarginecontrollo.right &&
+              spaziomarginecontrollo2.right > spritemarginecontrollo.left
+          ){   
             $("#spazioLudico").hide(); //toglie
 		        $("#sprite").remove();
 		        document.getElementById("perso").style.display = "block"; //visualizza
