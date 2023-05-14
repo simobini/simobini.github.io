@@ -20,6 +20,7 @@ const Pezzi = [
 var img = document.createElement("img");
 var song = true;
 let punteggio = 0;
+let mostrato = false;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
 var mov = document.createElement('audio');
@@ -111,7 +112,7 @@ Pezzo.prototype.cancella = function(){
 //La funzione cancella invece riempie i quadrati dell'area di gioco con il colore di SV, cancellando così il tetramino precedentemente disegnato.
 
 Pezzo.prototype.muoviGiu = function(){
-    if(!this.collisione(0,1,this.TetraminoAttivo)){
+    if(!this.collisione(0,1,this.TetraminoAttivo) && !gameOver){
         this.cancella();
         this.y++;
         this.disegna();
@@ -182,13 +183,10 @@ Pezzo.prototype.blocca = function(){
 
             if(this.y + r < 0){
                 $("canvas").remove();
-                video.src = 'images/tetris/giorgio.mp4';
-                video.autoplay = true;
-                video.style.width = "640px";
-                video.style.height = "480px";
-                var container = document.getElementById('gameover');
-                container.appendChild(video);
-                perso.setAttribute('src', 'sounds/tetris/ziocanta.mp3');
+                img.src = "images/tetris/gameover.png";  
+                var src = document.getElementById("gameover");
+                src.appendChild(img);
+                perso.setAttribute('src', 'sounds/tetris/gameover.mp3');
                 perso.play();
                 sottofondo.pause();
                 mov.setAttribute('src', '');
@@ -221,6 +219,27 @@ Pezzo.prototype.blocca = function(){
     }
     disegnaTab();
     EPunteggio.innerHTML = punteggio;
+
+    if (gameOver && !mostrato) {
+        mostrato = true; // Imposta la variabile promptMostrato a true per evitare ulteriori prompt
+        setTimeout(function() {
+            if (confirm("Vuoi giocare ancora?")) window.location.reload();
+            else
+            {
+                src.removeChild(img);
+                video.src = 'images/tetris/giorgio.mp4';
+                video.autoplay = true;
+                video.style.width = "640px";
+                video.style.height = "480px";
+                var container = document.getElementById('gameover');
+                container.appendChild(video);
+                setTimeout(function() {
+                    perso.setAttribute('src', 'sounds/tetris/ziocanta.mp3');
+                    perso.play();
+                }, 450);
+            }
+        }, 2000);
+    }
 
 }
 /*La funzione 'blocca()' viene chiamata quando il pezzo corrente si è bloccato sul fondo del gioco o ha raggiunto un altro pezzo già posizionato. 
