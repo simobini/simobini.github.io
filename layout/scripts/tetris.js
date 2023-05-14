@@ -25,6 +25,7 @@ var perso = document.createElement('audio');
 var mov = document.createElement('audio');
 var togli = document.createElement('audio');
 var giorgio = document.createElement('audio');
+var video = document.createElement('video');
 //dichiarazione variabili
 
 $(".game").hide();
@@ -181,15 +182,17 @@ Pezzo.prototype.blocca = function(){
 
             if(this.y + r < 0){
                 $("canvas").remove();
-                img.src = "images/tetris/gameover.png";  
-                var src = document.getElementById("gameover");
-                src.appendChild(img);
+                video.src = 'images/tetris/giorgio.mp4';
+                video.autoplay = true;
+                video.style.width = "640px";
+                video.style.height = "480px";
+                var container = document.getElementById('gameover');
+                container.appendChild(video);
                 perso.setAttribute('src', 'sounds/tetris/ziocanta.mp3');
                 perso.play();
                 sottofondo.pause();
                 mov.setAttribute('src', '');
                 sottofondo.removeAttribute('src');
-                $("img:first").css("margin-top","150px");
                 EPunteggio.style.marginTop = -170 + "px";
                 gameOver = true;
             }
@@ -332,16 +335,19 @@ window.addEventListener("load", (event) => {
 //Funzione per riprodurre la musica di sottofondo
 
 window.onblur = function() {
-    sottofondo.pause();
-    mov.setAttribute('src', '');
-    perso.pause();
+
+    if(!gameOver){
+        sottofondo.pause();
+        mov.setAttribute('src', '');
+    }
 }
 //Funzione per mettere in pausa la musica quando si cambia scheda
 
 window.onfocus = function() {
-    sottofondo.play();
-    mov.setAttribute('src', 'sounds/tetris/click.mp3');
-    perso.play();
+    if(!gameOver){
+        sottofondo.play();
+        mov.setAttribute('src', 'sounds/tetris/click.mp3');
+    }
 }
 //Funzione per riprodurre la musica quando si ritorna alla scheda
 
