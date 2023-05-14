@@ -134,3 +134,128 @@ h3{
     0% { width: 0; }
     100% { width: 100%; }
 }
+
+/* Responsive */
+
+/* Stile per schermi piccoli */
+@media only screen and (max-width: 768px) {
+    body {
+        background-color: #2b2d42;
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 55px;
+    }
+    
+    h3 {
+        color: aliceblue;
+        margin-bottom: -25px;
+    }
+    
+    div {
+        font-size: 20px;
+    }
+    
+    canvas {
+        width: 50%;
+    }
+    
+    #home, #state, #restart, #music {
+        margin-top: 20px;
+    }
+  
+    .loading-bar {
+        width: 50%;
+        height: 20px;
+    }
+
+    .loading-text {
+        top: -20px;
+        font-size: 16px;
+    }
+    
+    .loading-image {
+        top: -20%;
+        height: 30px;
+    }
+}
+
+/* Stile per schermi medi */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    ody {
+        background-color: #2b2d42;
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 55px;
+    }
+    
+    h3 {
+        color: aliceblue;
+        margin-bottom: -25px;
+    }
+    
+    div {
+        font-size: 22px;
+    }
+    
+    canvas {
+        width: 30%;
+    }
+    
+    #home, #state, #restart, #music {
+        margin-top: 30px;
+    }
+
+    .loading-container {
+        margin-top: 10%;
+    }
+
+    .loading-container {
+        margin-top: 20%;
+    }
+
+    .loading-bar {
+        width: 30%;
+        height: 25px;
+    }
+
+    .loading-text {
+        top: -22px;
+        font-size: 18px;
+    }
+
+    .loading-image {
+        top: -25%;
+        height: 35px;
+    }
+
+}
+
+/* Stile per schermi grandi */
+@media only screen and (min-width: 1024px) {
+    body {
+        background-color: #2b2d42;
+        color: white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 55px;
+    }
+    
+    h3 {
+        color: aliceblue;
+        margin-bottom: -25px;
+    }
+    
+    div {
+        font-size: 25px;
+    }
+    
+    canvas {
+        width: 15%;
+    }
+    
+    #home, #state, #restart, #music {
+        margin-top: 40px;
+    }
+}
