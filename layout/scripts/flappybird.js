@@ -10,6 +10,7 @@ var punteggioMiglioreFlappy = parseInt(localStorage.getItem("punteggioMiglioreFl
 const EPunteggioFlappy = document.getElementById("punteggioFlappy");
 const MPunteggioFlappy = document.getElementById("punteggioMiglioreFlappy");
 MPunteggioFlappy.innerHTML = punteggioMiglioreFlappy;
+
 $(".game").hide();
 setInterval(start, 2000);
 
@@ -18,6 +19,7 @@ function start() {
   $(".game").show();
   $("div:first").hide();
 }
+
 
 // Aggiunge l'evento 'animationiteration' per gestire il movimento dello spazio
 spazio.addEventListener('animationiteration', () => {
@@ -55,9 +57,9 @@ var punteggioFlappy = 0;
 var punteggioMiglioreFlappy = localStorage.getItem("punteggioMiglioreFlappy") || 0;
 
 function collisione() {
-  var spaziomarginecontrollo = spazio.getBoundingClientRect(); // div ha id "spazio" 
-  var spritemarginecontrollo = sprite.getBoundingClientRect(); // immagine ha id "sprite"
-  var spaziomarginecontrollo2 = colonna.getBoundingClientRect(); // div ha id "colonna"
+  var spaziomarginecontrollo = spazio.getBoundingClientRect(); // ottiene i margini dello spazio
+  var spritemarginecontrollo = sprite.getBoundingClientRect(); // ottiene i margini del personaggio
+  var spaziomarginecontrollo2 = colonna.getBoundingClientRect(); // ottiene i margini delle colonne
 
   // Controllo se il personaggio passa attraverso lo spazio
   if (
@@ -66,9 +68,11 @@ function collisione() {
     spaziomarginecontrollo.left < spritemarginecontrollo.right &&
     spaziomarginecontrollo.right > spritemarginecontrollo.left
   ) {
+    // Il personaggio passa attraverso lo spazio
+    // Incrementa il punteggio
     punteggioFlappy += 1;
     EPunteggioFlappy.innerHTML = punteggioFlappy;
-    MPunteggioFlappy.innerHTML = punteggioMiglioreFlappy;
+    // Aggiorna il punteggio migliore se necessario
     if (punteggioFlappy > punteggioMiglioreFlappy) {
       punteggioMiglioreFlappy = punteggioFlappy;
       localStorage.setItem("punteggioMiglioreFlappy", punteggioMiglioreFlappy);
@@ -80,6 +84,7 @@ function collisione() {
     spaziomarginecontrollo2.right > spritemarginecontrollo.left
   ) {
     // Sbarra che cade
+    sottofondo.pause();
     $("#sbarrachecade").get(0).volume = 0.1;
     $("#sbarrachecade")[0].pause();
     $("#sbarrachecade")[0].play();
