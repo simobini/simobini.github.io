@@ -8,13 +8,13 @@
         <meta name="keywords" content="Snake">
         <meta name="author" content="Padurean Davide">
         <title>Snake</title>
-        <link href="images/tetris/icon.png" rel="icon" media="all">
+        <link href="images/snake/icon.png" rel="icon" media="all">
         <link href="layout/styles/snake.css" rel="stylesheet" type="text/css">
         <script src="layout/scripts/jquery-3.6.4.min.js"></script>
     </head>
 
     <body>
-    <!--SCHERMATA LOADING INIZIALE POI SPARISCE
+    
         <div class="loading-container">
             <div class="loading-bar">
                 <div class="loading-text">LOADING</div>
@@ -22,9 +22,7 @@
               <div class="loading-image"></div>
             </div>
         </div>
-    ------------------FINE SCHERMATA LOADING-------------------->
-        
-
+    
     <!----------------------INIZIO CODICE DEL GIOCO SNAKE---------------------->
         <div>
             <!--titolo del gioco formato immagine-->
@@ -32,13 +30,14 @@
         </div><br>
 
         <!----------------------DIV NEL QUALE APPARITA LA SCRITTA GAME OVER---------------------->
-        <div>
+        <div class="game">
         </div>
 
         <!----------------------CI PERMETTE DI VISUALIZZATE IL NECESSARIO PER IL GIOCO DOPO LA SCHERMATA DI CARICAMENTO---------------------->
         <div class="gioco">
         
         <div id="board"></div>
+            <div id="messaggio">Hai perso <br> premi INVIO per continuare a giocare</div>
             <div id="serpente"></div>
         </div>
     
@@ -51,9 +50,9 @@
 
 
     <!----------------------PULSANTI ALLA FINE DELLA PAGINA---------------------->
-        <div>
+        <div class="game">
             <img id="state" src="images/common/pause.png">
-            <a href="index.html"><img id="home" src="images/common/home.png" alt="Home"></a>
+            <img id="home" src="images/common/home.png" alt="Home">
             <img id="restart" src="images/common/restart.png" alt="Refresh">
             <img id="music" src="images/common/music.png" alt="Musica">
         </div>

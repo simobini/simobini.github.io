@@ -2,6 +2,7 @@
 
 body{
     margin-top: 15px;
+    background-color: #2b2d42;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,66 +22,27 @@ div{
     cursor: pointer;
 }
 
-/*
-.loading-container {
-    width: 100%;
-    height: 100%;
-    margin-top: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-  
-.loading-bar {
-    width: 20%;
-    height: 30px;
-    background-color: #ccc;
-    position: relative;
-    border-radius: 10px;
-}
-  
-.loading-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: red;
-    animation: progress 3s ease-in-out forwards;
-    border-radius: 10px;
-}
-  
-.loading-text {
-    position: absolute;
-    top: -25px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-}
-  
-.loading-image {
-    position: absolute;
-    top: -22%;
-    left: 0;
-    height: 40px;
-    background-image: url('../../images/snake/littleImgSnakeDownload.png');
-    background-repeat: no-repeat;
-    background-position: center right;
-    background-size: contain;
-    animation: progress 3s ease-in-out forwards;
-}
-
-
- 
-@keyframes progress {
-    0% { width: 0; }
-    100% { width: 100%; }
-}
-*/
-
 /*------------------------------------STYLE RIGUARDANTE IL GIOCO------------------------------------*/
 /*style del wrapper della mappa di gioco*/
+#messaggio{
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    position: fixed;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-top: 56px;
+    width: 35vmin;
+    height: 20vmin;
+    background-color: rgba(0, 0, 0, 0.5); /* Opacità 50% */
+    z-index: 9999; /* Assicura che il div si sovrapponga ad altri elementi */
+    display: none; /* Inizialmente nascosto */
+    background-image: url("../../images/snake/brawl.JPEG");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 .gioco{
     margin-top: -130px;
     min-height: 100vh;
@@ -110,8 +72,9 @@ div{
 }
 
 #board{
-    background: linear-gradient(rgb(60, 65, 66), rgb(46, 146, 192));
-    
+    background-color:rgb(51, 143, 185);
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 70vmin;
     height: 70vmin;
     border: 2px solid black;
@@ -122,7 +85,9 @@ div{
 }
 
 .head{
-    background: linear-gradient(green, blue);
+    background-color: #2e7a3ff5;
+    background-size: cover;
+    background-repeat: no-repeat;
     border: 3px solid black;
     border-radius: 6px;
     background-repeat: no-repeat;
@@ -130,14 +95,14 @@ div{
 }
 
 .snake{
-    background: linear-gradient(gray, pink);
+    background-color: #2e7a3ff5;
     border: 3px solid black;
     border-radius: 6px;
     background-repeat: no-repeat;
     background-size: contain;}
 
 .food{
-    background: linear-gradient(red, purple);
+    background-color: #C73A4C;
     border: 3px solid black;
     border-radius: 6px;
     background-repeat: no-repeat;
@@ -153,3 +118,56 @@ div{
 }
 
 
+.loading-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.loading-bar {
+    width: 20%;
+    height: 30px;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 10px;
+}
+  
+.loading-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: red;
+    animation: progress 2s ease-in-out forwards;
+    border-radius: 10px;
+}
+  
+.loading-text {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.loading-image {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    height: 40px;
+    background-image: url('../../images/common/mario.gif');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: contain;
+    animation: progress 2s ease-in-out forwards;
+}
+  
+@keyframes progress {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
