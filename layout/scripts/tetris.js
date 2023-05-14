@@ -238,14 +238,14 @@ Pezzo.prototype.blocca = function(){
             else
             {
                 src.removeChild(img);
-                video.src = 'images/tetris/giorgio.mp4';
+                video.src = 'images/tetris/giorgione.mp4';
                 video.autoplay = true;
                 video.style.width = "640px";
                 video.style.height = "480px";
                 var container = document.getElementById('gameover');
                 container.appendChild(video);
                 setTimeout(function() {
-                    perso.setAttribute('src', 'sounds/tetris/ziocanta2.mp3');
+                    perso.setAttribute('src', 'sounds/tetris/ziocanta.mp3');
                     perso.play();
                 }, 850);
             }
