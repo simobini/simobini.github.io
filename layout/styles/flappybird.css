@@ -13,9 +13,24 @@ body{
     animation: colonna 3s infinite linear;
 }
 
+/* #colonna2{
+    width: 7%;
+    height: 99%;
+    background-color: #FFA214;
+    border: 3px solid #EB7113;
+    position: relative;
+    left: -100%;
+    animation: colonna2 5s infinite linear;
+}
+
+@keyframes colonna2 {
+    0%{left: 100%};
+    100%{left: -60%};
+} */
+
 @keyframes colonna {
     0%{left: 100%};
-    100%{left: -50%};
+    100%{left: -10%};
 }
 
 #spazio{
@@ -27,6 +42,16 @@ body{
     top: -25%;
     animation: colonna 3s infinite linear;
 }
+
+/* #spazio2{
+    width: 8%;
+    height: 22%;
+    background-color: #71C5D0;
+    position: relative;
+    left: -100%;
+    top: -25%;
+    animation: colonna2 5s infinite linear;
+} */
 
 #spazioLudico{
     background-color: #71C5D0;

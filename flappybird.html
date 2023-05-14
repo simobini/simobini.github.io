@@ -20,6 +20,16 @@
 		</div>
 	</div>
 
+	<audio id="sbarrachecade" preload="auto">
+		<source src="sounds/flappybird/collisionsound.mp3" controls></source>
+		Errore
+	</audio>
+
+	<audio id="flap" preload="auto">
+		<source src="sounds/flappybird/flapsound.mp3" controls></source>
+		Errore
+	</audio>
+	
 	<img src="images/flappybird/titolo.png" alt="Title" id="title" class="game"></img>
 	<img src="images/flappybird/gameover.png" alt="Game Over" id="perso"></img>
 
@@ -33,7 +43,8 @@
 	</div>
 	
 	<div class="game">
-		<h3 id="punti">Punteggio: 0</h3>
+		<h3>Punteggio: <div id="punteggio">0</div></h3>
+		<h3>Miglior Punteggio: <div id="punteggioMigliore">0</div></h3>
 	</div>
 	
 

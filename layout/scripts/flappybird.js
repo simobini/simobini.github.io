@@ -1,12 +1,13 @@
-//Parte JavaScript
 var colonna = document.getElementById("colonna");
 var spazio = document.getElementById("spazio");
 var sprite = document.getElementById("sprite");
 var song = true; //variabile settata a true perchè la musica parte subito
-var point = 0; //variabile punti
 var sottofondo = document.createElement('audio'); //musica di sottofondo
 var perso = document.createElement('audio'); //effetto audio gameover
 var mov = document.createElement('audio'); //effetto audio movimento
+var punteggio = 0;
+const EPunteggio = document.getElementById("punteggio");
+const MPunteggio = document.getElementById("punteggioMiglioreflappy");
 
 $(".game").hide();
 setInterval(start, 2000);
@@ -39,6 +40,10 @@ function controlloMargineSotto(y){ //controlla quando scendo
 		$("#spazioLudico").remove(); //toglie
 		$("#sprite").remove();
 		document.getElementById("perso").style.display = "block"; //visualizza
+    if (punteggio > punteggioMigliore) {
+      punteggioMigliore = punteggio;
+      localStorage.setItem("punteggioMigliore", punteggioMigliore);
+    }
 	}
 	else{ //aggiunge la gravità
 		y = y + 5;
@@ -47,10 +52,11 @@ function controlloMargineSotto(y){ //controlla quando scendo
 }
 
 function collisione(){
-    var spaziomarginecontrollo = spazio.getBoundingClientRect(); //Il mio div ha id "spazio" 
-    var spritemarginecontrollo = sprite.getBoundingClientRect(); //La mia immagine ha id "sprite"
-    var spaziomarginecontrollo2 = colonna.getBoundingClientRect(); //Il mio div ha id "colonna"
-    
+    var spaziomarginecontrollo = spazio.getBoundingClientRect(); //div ha id "spazio" 
+    var spritemarginecontrollo = sprite.getBoundingClientRect(); //immagine  ha id "sprite"
+    var spaziomarginecontrollo2 = colonna.getBoundingClientRect(); //div ha id "colonna"
+    var punteggioMigliore = localStorage.getItem("punteggioMiglioreflappy") || 0;
+
     //conto i punti
     if ( //parte dove può passare
         spaziomarginecontrollo.top < spritemarginecontrollo.bottom &&
@@ -58,18 +64,30 @@ function collisione(){
         spaziomarginecontrollo.left < spritemarginecontrollo.right &&
         spaziomarginecontrollo.right > spritemarginecontrollo.left
       ) {    
-        point = point + 1;
-        $("#punti").text("Punteggio: " + point);
+        punteggio = punteggio + 1;
+        console.log(punteggio);
+        EPunteggio.innerHTML = punteggio;
+        MPunteggio.innerHTML = punteggioMigliore;
+        if (punteggio > punteggioMigliore) {
+            punteggioMigliore = punteggio;
+            localStorage.setItem("punteggioMiglioreflappy", punteggioMigliore);
+        }
       }
     else if( //parte dove non può passare
+              spaziomarginecontrollo2.top < spritemarginecontrollo.bottom &&
+              spaziomarginecontrollo2.bottom > spritemarginecontrollo.top &&          
               spaziomarginecontrollo2.left < spritemarginecontrollo.right &&
               spaziomarginecontrollo2.right > spritemarginecontrollo.left
           ){ 
+            //sbarra che cade
+            $("#sbarrachecade").get(0).volume = 0.1;
+            $("#sbarrachecade")[0].pause();
+            $("#sbarrachecade")[0].play();
             $("#title").css("margin-top", "275px");
             $("#spazioLudico").remove(); 
 		        $("#sprite").remove();
 		        document.getElementById("perso").style.display = "block"; //visualizza
-        }
+        }    
 }
 
 var y = 70; //altezza del personaggio
@@ -97,6 +115,10 @@ $(document).ready(function(){
     
     $("#spazioLudico").click(function(){ //mi muovo su
       y = controlloMargineSopra(y);
+      //ala
+      $("#flap").get(0).volume = 0.1;
+      $("#flap")[0].pause();
+      $("#flap")[0].play();
       $("#sprite").attr("src", "images/flappybird/sprite2.png");
       $("#sprite").animate({top: y +'%'}); //mi muovo su
       collisione();
@@ -115,6 +137,7 @@ $("#state").click(function(){
 $("#restart").click(function(){
   sottofondo.pause();
   if(confirm("Riavviare la partita?")) {
+      localStorage.setItem('punteggio', punteggio);
       window.location.reload();
   }
   else sottofondo.play();
@@ -132,7 +155,7 @@ $("#home").click(function(){
 
 window.addEventListener("load", (event) => {
   setTimeout(function() {
-      sottofondo.setAttribute('src', '');
+      sottofondo.setAttribute('src', 'sounds/flappybird/themesound.mp3');
       sottofondo.volume = 0.1;
       sottofondo.play();
   }, 2000);
