@@ -1,32 +1,28 @@
-// Costanti e variabili riguardanti il gioco
-const inputDir = {x: 0, y: 0};
-const spazioMax = 20;
+//---------------------------------------------------------------------------------------
+//-----------------------------COSTANTI E VARIABILI RIGUARDANTE IL GIOCO
+let inputDir = {x: 0, y: 0}; 
+let spazioMax = 20;
 let puntAttuale = 0;
 let lastPaintTime = 0;
 let controlloIntervallo;
 let contatoreXControllo = 0;
 let puntMigliore = 0;
 let numeroXlocal = 0;
+let punteggioSnake = 0;
+let punteggioMiglioreSnake = localStorage.getItem("bestPunt") || 0;
 
-// Elementi audio
+const EPunteggioSnake = document.getElementById("puntNow");
+const MPunteggioSnake = document.getElementById("bestPunt");
 const suonoCibo = document.createElement('audio');
 const gameOver = document.createElement('audio');
 const movimentoSerpente = document.createElement('audio');
 const musicaBackground = document.createElement('audio');
+const img = document.createElement("img");
 const audioElement = document.createElement('audio');
 
-// Elementi HTML
-const img = document.createElement("img");
+let song = true;
 
-// Variabili di gioco
-let punteggio = 0;
-
-//posizioniamo sia il cibo che il serpente
-let snakeArr = [
-  {x: 13, y: 15}
-];
-let food = {x: 6, y: 7};
-
+MPunteggioSnake.innerHTML = punteggioMiglioreSnake;
 
 $(".game").hide();
 $(".gioco").hide();
@@ -42,6 +38,18 @@ function start(){
 }
 //Funzione per cambiare tra la loading bar e far iniziare il gioco
 
+//---------------------------------------------------------------------------------------
+//posizioniamo sia il cibo che il serpente
+food = {x: 6, y: 7};
+
+let snakeArr = [
+    {x: 13, y: 15}
+];
+
+//---------------------------------------------------------------------------------------
+//-----------------------------FUNZIONI RIGUARDANTI IL GIOCO-----------------------------
+
+//controllo se il serpente ha colpito sestesso o uno dei bordi
 function isCollide(snake) {
     //se ti colpisci dasolo
     for (let i = 1; i < snakeArr.length; i++) {
@@ -50,11 +58,17 @@ function isCollide(snake) {
             gameOver.setAttribute('src', 'sounds/snake/gameover.mp3');
             gameOver.play();
             //aggiornamento del punteggio
-            document.getElementById("bestPunt").innerHTML = puntAttuale;
             document.getElementById("puntNow").innerHTML = 0;
             puntAttuale = 0;
             return true;
         }
+
+        if (puntAttuale > punteggioMiglioreSnake) {
+            punteggioMiglioreSnake = puntAttuale; // Aggiornamento del punteggio migliore
+            localStorage.setItem("bestPunt", punteggioMiglioreSnake); // Salvataggio del punteggio migliore in localStorage
+            MPunteggioSnake.innerHTML = punteggioMiglioreSnake; // Aggiornamento del punteggio migliore visualizzato nell'HTML
+          }
+          
     }
     //se vai contro ai bordi della board
     if(((snake[0].x)+inputDir.x) > 20 || ((snake[0].x)+inputDir.x) <=0 || ((snake[0].y)+inputDir.y) > 20 || ((snake[0].y)+inputDir.y) <=0){
@@ -64,29 +78,27 @@ function isCollide(snake) {
         musicaBackground.pause();
         gameOver.play();
         //aggiornamento del punteggio
-        document.getElementById("bestPunt").innerHTML = puntAttuale;
         document.getElementById("puntNow").innerHTML = 0;
         puntAttuale = 0;
         return true;
     }
     return false;
 }
-//Controllo se il serpente ha colpito sestesso o uno dei bordi
 
+//-------------------------------------------------------------------------
+//funzione che mi da le coordinate della posizione successiva del cibo
 function randomPosizioneCibo()
 {
     food.x = Math.floor(Math.random() * 20) + 1;
     food.y = Math.floor(Math.random() * 20) + 1
 }
-//Funzione che mi da le coordinate della posizione successiva del cibo
 
-
+//funzione che mostra il div del messaggio
 function mostraMessaggio()
 {
     var mess = document.getElementById("messaggio");
     mess.style.display = 'block';
 }
-//Funzione che mostra il div del messaggio
 
 function nascondiMessaggio()
 {
@@ -99,6 +111,7 @@ function premiINVIO()
     document.addEventListener('keypress', function(event) {
         // Controlla se il tasto premuto è il tasto Invio
         if(event.key === 'Enter') {
+            musicaBackground.play();
             nascondiMessaggio();
             snakeArr = [{x: 13, y: 15}]; //riposiziono il serpente nella casella 13, 15
             score = 0;
@@ -117,6 +130,7 @@ function gameEngine(){
         mostraMessaggio(); //faccio apparire il div che mi chiede se voglio continuare a giocare
 
         if(premiINVIO()===false) premiINVIO(); //il giocatore deve premere perforza il tasto INVIO per continuare la partita
+        
 
         snakeArr = [{x: 13, y: 15}]; //riposiziono il serpente nella casella 13, 15
         score = 0;
@@ -168,13 +182,17 @@ function gameEngine(){
     
 }
 
-//premendo uno dei 4 tasti il serpente si muoverà nella direzione voluta
+//premendo uno dei 4 tasti il serpente si muoverà nella direzione voluta, non potr
 const rotazione = document.getElementsByClassName("head");
 
 document.onkeydown = muoviSerpente;
 
 function muoviSerpente(e)
 {
+    if (document.getElementById("messaggio").style.display === 'block') {
+        return;
+    }
+
     if(e.key == "ArrowUp" && inputDir.y != 1)
     {
         inputDir.x = 0;
