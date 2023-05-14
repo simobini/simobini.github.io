@@ -1,6 +1,7 @@
 const cvs = document.getElementById("tetris");
 const ctx = cvs.getContext("2d");
 const EPunteggio = document.getElementById("punteggio");
+const MPunteggio = document.getElementById("punteggioMigliore");
 
 const RIG= 20;
 const COL= 10;
@@ -20,6 +21,7 @@ const Pezzi = [
 var img = document.createElement("img");
 var song = true;
 let punteggio = 0;
+let punteggioMigliore = localStorage.getItem("punteggioMigliore") || 0;
 let mostrato = false;
 var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
@@ -60,6 +62,9 @@ function disegnaTab(){
             disegnaQuad(c,r,tabella[r][c]);
         }
     }
+
+    EPunteggio.innerHTML = punteggio;
+    MPunteggio.innerHTML = punteggioMigliore;
 }
 
 disegnaTab();
@@ -197,6 +202,11 @@ Pezzo.prototype.blocca = function(){
             else tabella[this.y+r][this.x+c] = this.color;
         }
     }
+
+    if (punteggio > punteggioMigliore) {
+        punteggioMigliore = punteggio;
+        localStorage.setItem("punteggioMigliore", punteggioMigliore);
+      }
 
     for(r = 0; r < RIG; r++){
         let RigaPiena = true;
