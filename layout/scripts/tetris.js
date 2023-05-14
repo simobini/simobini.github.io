@@ -176,9 +176,10 @@ Pezzo.prototype.ruota = function(){
 /*Queste 4 funzioni permettono di muovere l'oggetto Pezzo e controllano anche la presenza di collisioni utilizzando la funzione collisione e, 
 se non ci sono collisioni, spostano l'oggetto e ridisegnano il tetramino con la nuova posizione utilizzando le funzioni cancella e disegna. 
 Se invece c'è una collisione, la funzione blocca viene chiamata per bloccare l'oggetto nella posizione corrente e viene generato un nuovo oggetto Pezzo casuale utilizzando la funzione PezziRandom.*/
-togli.setAttribute('src', 'sounds/tetris/addio.mp3');
 
 Pezzo.prototype.blocca = function(){
+    togli.setAttribute('src', 'sounds/tetris/addio.mp3');
+    
     for(r = 0; r < this.TetraminoAttivo.length; r++){
         for(c = 0; c < this.TetraminoAttivo.length; c++){
 
@@ -206,7 +207,7 @@ Pezzo.prototype.blocca = function(){
     if (punteggio > punteggioMigliore) {
         punteggioMigliore = punteggio;
         localStorage.setItem("punteggioMigliore", punteggioMigliore);
-      }
+    }
 
     for(r = 0; r < RIG; r++){
         let RigaPiena = true;
@@ -244,9 +245,9 @@ Pezzo.prototype.blocca = function(){
                 var container = document.getElementById('gameover');
                 container.appendChild(video);
                 setTimeout(function() {
-                    perso.setAttribute('src', 'sounds/tetris/ziocanta.mp3');
+                    perso.setAttribute('src', 'sounds/tetris/ziocanta2.mp3');
                     perso.play();
-                }, 450);
+                }, 850);
             }
         }, 2000);
     }
