@@ -27,7 +27,7 @@ var sottofondo = document.createElement('audio');
 var perso = document.createElement('audio');
 var mov = document.createElement('audio');
 var togli = document.createElement('audio');
-var giorgio = document.createElement('audio');
+var berta = document.createElement('audio');
 var video = document.createElement('video');
 //dichiarazione variabili
 
