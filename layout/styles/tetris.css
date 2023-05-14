@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #2b2d42;
     color: white;
     background-repeat: no-repeat;
@@ -6,33 +6,37 @@ body{
     margin-top: 55px;
 }
 
-h3{
+h3 {
     color: aliceblue;
     margin-bottom: -25px;
 }
 
-#punteggio, #punteggioMigliore{
+#punteggio,
+#punteggioMigliore {
     display: inline-block;
 }
 
-#punteggiomigliore{
+#punteggiomigliore {
     display: inline-block;
 }
 
-div{
+div {
     font-size: 25px;
     font-weight: bold;
     font-family: monospace;
     text-align: center;
 }
 
-canvas{
+canvas {
     display: block;
     margin: 0 auto;
     width: 15%;
 }
 
-#home,#state,#restart,#music{
+#home,
+#state,
+#restart,
+#music {
     margin-top: 40px;
     width: 30px;
     cursor: pointer;

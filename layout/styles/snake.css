@@ -1,30 +1,29 @@
-/*style del body*/
-
-body{
+/* style del body */
+body {
     margin-top: 15px;
     background-color: #2b2d42;
     color: white;
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: hidden;
-}
-
-div{
+  }
+  
+  div {
     font-size: 25px;
     font-weight: bold;
     font-family: monospace;
     text-align: center;
-}
-
-/*style che riguarda i pulsanti alla fine della pagina*/
-#home,#state,#restart,#music{
+  }
+  
+  /* style che riguarda i pulsanti alla fine della pagina */
+  #home, #state, #restart, #music {
     width: 30px;
     cursor: pointer;
-}
-
-/*------------------------------------STYLE RIGUARDANTE IL GIOCO------------------------------------*/
-/*style del wrapper della mappa di gioco*/
-#messaggio{
+  }
+  
+  /* ------------------------------------STYLE RIGUARDANTE IL GIOCO------------------------------------ */
+  /* style del wrapper della mappa di gioco */
+  #messaggio {
     color: black;
     font-weight: bold;
     font-size: 25px;
@@ -40,10 +39,9 @@ div{
     background-image: url("../../images/snake/brawl.JPEG");
     background-repeat: no-repeat;
     background-size: cover;
-
-}
-
-.gioco{
+  }
+  
+  .gioco {
     margin-top: -130px;
     min-height: 100vh;
     background-size: 100vw 100vh;
@@ -51,28 +49,28 @@ div{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#scoreBox{
+  }
+  
+  #scoreBox {
     position: absolute;
     top: 9px;
     right: 200px;
     font-size: 39px;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
-}
-
-#hiscoreBox{
+  }
+  
+  #hiscoreBox {
     position: absolute;
     top: 59px;
     right: 140px;
     font-size: 39px;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
-}
-
-#board{
-    background-color:rgb(51, 143, 185);
+  }
+  
+  #board {
+    background-color: rgb(51, 143, 185);
     background-repeat: no-repeat;
     background-size: cover;
     width: 70vmin;
@@ -82,9 +80,9 @@ div{
     grid-template-rows: repeat(20, 1fr);
     grid-template-columns: repeat(20, 1fr);
     margin-top: -50px;
-}
-
-.head{
+  }
+  
+  .head {
     background-color: #2e7a3ff5;
     background-size: cover;
     background-repeat: no-repeat;
@@ -92,31 +90,32 @@ div{
     border-radius: 6px;
     background-repeat: no-repeat;
     background-size: contain;
-}
-
-.snake{
+  }
+  
+  .snake {
     background-color: #2e7a3ff5;
     border: 3px solid black;
     border-radius: 6px;
     background-repeat: no-repeat;
-    background-size: contain;}
-
-.food{
+    background-size: contain;
+  }
+  
+  .food {
     background-color: #C73A4C;
     border: 3px solid black;
     border-radius: 6px;
     background-repeat: no-repeat;
     background-size: contain;
-}
-
-.visuaPunteggio{
+  }
+  
+.visuaPunteggio
+{
     margin-top: -145px;
-    margin-bottom:15px;
+    margin-bottom: 15px;
     color: white;
     text-align: center;
     font-size: 25px;
 }
-
 
 .loading-container {
     width: 100%;
@@ -171,3 +170,34 @@ div{
     0% { width: 0; }
     100% { width: 100%; }
 }
+
+@media (max-width: 768px) {
+    /* Aggiungi qui le modifiche CSS per schermi con larghezza massima di 768px */
+    body {
+      /* Esempio: Riduci il margin-top */
+      margin-top: 10px;
+    }
+  
+    /* Aggiungi altre regole CSS necessarie per la versione mobile */
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    /* Aggiungi qui le modifiche CSS per schermi con larghezza compresa tra 768px e 1024px */
+    /* Esempio: Riduci la dimensione del font nel div */
+    div {
+      font-size: 20px;
+    }
+  
+    /* Aggiungi altre regole CSS necessarie per la versione tablet */
+  }
+  
+  @media screen and (min-width: 1024px) {
+    /* Aggiungi qui le modifiche CSS per schermi con larghezza minima di 1024px */
+    /* Esempio: Modifica il posizionamento del punteggio */
+    #scoreBox {
+      right: 150px;
+    }
+  
+    /* Aggiungi altre regole CSS necessarie per la versione desktop */
+  }
+    

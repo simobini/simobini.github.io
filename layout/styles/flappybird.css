@@ -1,9 +1,19 @@
-body{
-	background-color: #2b2d42;
-    color: aliceblue; 
+body {
+    background-color: #2b2d42;
+    color: aliceblue;
 }
 
-#colonna{
+h3 {
+    color: aliceblue;
+    margin-bottom: -25px;
+}
+
+#punteggioFlappy,
+#punteggioMiglioreFlappy {
+    display: inline-block;
+}
+
+#colonna {
     width: 7%;
     height: 99%;
     background-color: #5AC44E;
@@ -13,27 +23,16 @@ body{
     animation: colonna 3s infinite linear;
 }
 
-/* #colonna2{
-    width: 7%;
-    height: 99%;
-    background-color: #FFA214;
-    border: 3px solid #EB7113;
-    position: relative;
-    left: -100%;
-    animation: colonna2 5s infinite linear;
-}
-
-@keyframes colonna2 {
-    0%{left: 100%};
-    100%{left: -60%};
-} */
-
 @keyframes colonna {
-    0%{left: 100%};
-    100%{left: -10%};
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -10%;
+    }
 }
 
-#spazio{
+#spazio {
     width: 8%;
     height: 22%;
     background-color: #71C5D0;
@@ -43,69 +42,63 @@ body{
     animation: colonna 3s infinite linear;
 }
 
-/* #spazio2{
-    width: 8%;
-    height: 22%;
+#spazioLudico {
     background-color: #71C5D0;
-    position: relative;
-    left: -100%;
-    top: -25%;
-    animation: colonna2 5s infinite linear;
-} */
-
-#spazioLudico{
-    background-color: #71C5D0;
-	width: 43%;
-	height: 71%;
-	margin: auto;
-	margin-bottom: 1.5%;
+    width: 43%;
+    height: 71%;
+    margin: auto;
+    margin-bottom: 1.5%;
     overflow: hidden;
 }
 
-#title{
-	margin-top: 1.3%;
-	margin-bottom: 1%;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 17%;
+#title {
+    margin-top: 1.3%;
+    margin-bottom: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 17%;
 }
 
-#perso{
+#perso {
     margin-top: 1%;
     margin-bottom: 1%;
-	display: none;
-	margin-left: auto;
-	margin-right: auto;
-	width: 25%;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
 }
 
-#sprite{
-	width: 5.1%;
-	position: absolute;
-	left: 30%;
-	display: none;
+#sprite {
+    width: 5.1%;
+    position: absolute;
+    left: 30%;
+    display: none;
 }
 
-div{
+div {
     font-size: 25px;
     font-weight: bold;
     font-family: monospace;
     text-align: center;
 }
 
-h3{
+h3 {
     margin-top: -10px;
 }
 
-#punti{
+#punti {
     display: inline-block;
 }
 
-#home,#state,#restart,#music{
+#home,
+#state,
+#restart,
+#music {
     width: 30px;
     cursor: pointer;
 }
+
 
 .loading-container {
     width: 100%;

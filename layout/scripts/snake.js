@@ -1,22 +1,32 @@
-//---------------------------------------------------------------------------------------
-//-----------------------------COSTANTI E VARIABILI RIGUARDANTE IL GIOCO
-let inputDir = {x: 0, y: 0}; 
-var spazioMax = 20;
+// Costanti e variabili riguardanti il gioco
+const inputDir = {x: 0, y: 0};
+const spazioMax = 20;
 let puntAttuale = 0;
 let lastPaintTime = 0;
-var controlloIntervallo;
-var contatoreXControllo = 0;
-var puntMigliore=0;
-var numeroXlocal = 0;
+let controlloIntervallo;
+let contatoreXControllo = 0;
+let puntMigliore = 0;
+let numeroXlocal = 0;
 
+// Elementi audio
 const suonoCibo = document.createElement('audio');
 const gameOver = document.createElement('audio');
 const movimentoSerpente = document.createElement('audio');
 const musicaBackground = document.createElement('audio');
-var img = document.createElement("img");
-var song = true;
+const audioElement = document.createElement('audio');
+
+// Elementi HTML
+const img = document.createElement("img");
+
+// Variabili di gioco
 let punteggio = 0;
-var audioElement = document.createElement('audio');
+
+//posizioniamo sia il cibo che il serpente
+let snakeArr = [
+  {x: 13, y: 15}
+];
+let food = {x: 6, y: 7};
+
 
 $(".game").hide();
 $(".gioco").hide();
@@ -32,18 +42,6 @@ function start(){
 }
 //Funzione per cambiare tra la loading bar e far iniziare il gioco
 
-//---------------------------------------------------------------------------------------
-//posizioniamo sia il cibo che il serpente
-food = {x: 6, y: 7};
-
-let snakeArr = [
-    {x: 13, y: 15}
-];
-
-//---------------------------------------------------------------------------------------
-//-----------------------------FUNZIONI RIGUARDANTI IL GIOCO-----------------------------
-
-//controllo se il serpente ha colpito sestesso o uno dei bordi
 function isCollide(snake) {
     //se ti colpisci dasolo
     for (let i = 1; i < snakeArr.length; i++) {
@@ -73,21 +71,22 @@ function isCollide(snake) {
     }
     return false;
 }
+//Controllo se il serpente ha colpito sestesso o uno dei bordi
 
-//-------------------------------------------------------------------------
-//funzione che mi da le coordinate della posizione successiva del cibo
 function randomPosizioneCibo()
 {
     food.x = Math.floor(Math.random() * 20) + 1;
     food.y = Math.floor(Math.random() * 20) + 1
 }
+//Funzione che mi da le coordinate della posizione successiva del cibo
 
-//funzione che mostra il div del messaggio
+
 function mostraMessaggio()
 {
     var mess = document.getElementById("messaggio");
     mess.style.display = 'block';
 }
+//Funzione che mostra il div del messaggio
 
 function nascondiMessaggio()
 {
@@ -169,7 +168,7 @@ function gameEngine(){
     
 }
 
-//premendo uno dei 4 tasti il serpente si muoverà nella direzione voluta, non potr
+//premendo uno dei 4 tasti il serpente si muoverà nella direzione voluta
 const rotazione = document.getElementsByClassName("head");
 
 document.onkeydown = muoviSerpente;
